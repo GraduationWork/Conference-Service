@@ -17,27 +17,34 @@ public class HibernateConferenceDao implements IConferenceDao {
 	private SessionFactory sessionFactory;
 	
 	public void createConference(Conference conference) {
-		throw new NotImplementedException("method not implemented");
+		sessionFactory.getCurrentSession().save(conference);
 	}
 
 	public Conference readConference(String id) {
-		throw new NotImplementedException("method not implemented");
+		return sessionFactory.getCurrentSession().get(Conference.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Conference> readConferences() {
-		throw new NotImplementedException("method not implemented");
+		return sessionFactory.getCurrentSession()
+				.createCriteria(Conference.class)
+				.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Conference> readConferences(int page, int pageSize) {
-		throw new NotImplementedException("method not implemented");
+		return sessionFactory.getCurrentSession()
+				.createCriteria(Conference.class)
+				.setFirstResult((page - 1) * pageSize)
+				.setMaxResults(pageSize).list();
 	}
 
 	public void updateConference(Conference conference) {
-		throw new NotImplementedException("method not implemented");
+		sessionFactory.getCurrentSession().update(conference);
 	}
 
 	public void deleteConference(Conference conference) {
-		throw new NotImplementedException("method not implemented");
+		sessionFactory.getCurrentSession().delete(conference);
 	}
 
 	public void deleteConferenceById(String id) {
