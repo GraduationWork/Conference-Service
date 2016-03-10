@@ -1,0 +1,43 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+    <id>db-schema-archive</id>
+    <!-- baseDirectory>/</baseDirectory -->
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <fileSets>
+        <fileSet>
+            <directory>build</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+	<fileSet>
+            <directory>fsap_ab</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+       <fileSet>
+            <directory>fsap_sb</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+       <fileSet>
+            <directory>fsap_app</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+       <fileSet>
+            <directory>model</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+        </fileSet>
+
+    </fileSets>
+</assembly>
+

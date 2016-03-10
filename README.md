@@ -1,0 +1,1 @@
+psql -h localhost conferencedb conferencedb_user
