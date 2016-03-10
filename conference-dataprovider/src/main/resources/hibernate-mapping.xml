@@ -51,15 +51,26 @@
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
-		<one-to-one name="place" class="Place">
-			
-		</one-to-one>
-		<list name=""></list>
-		<!-- one to many -->
-				
+		<many-to-one name="place" column="PLACE_ID" class="Place" not-null="true" />
+		<set name="speakers" table="CONFERENCE_SPEAKERS" 
+        	inverse="false" lazy="false" fetch="join" cascade="all">
+            <key>
+                <column name="CONFERENCE_ID"  />
+            </key>
+            <many-to-many entity-name="Speaker">
+                <column name="SPEAKER_ID" not-null="true" />
+            </many-to-many>
+        </set>				
 	</class>
-
 	
-	
+	<class name="Place" table="PLACES">
+		<id name="username" type="string" column="USERNAME" />
+		<property name="password" type="string" column="PASSWORD" />
+		<property name="isActive" type="boolean" column="IS_ACTIVE" />
+		<property name="created" type="timestamp" column="CREATED"
+			insert="false" update="false" />
+		<property name="updated" type="timestamp" column="UPDATED"
+			insert="false" />
+	</class>
 
 </hibernate-mapping>

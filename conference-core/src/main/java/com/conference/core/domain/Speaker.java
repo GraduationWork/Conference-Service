@@ -47,5 +47,4 @@ public class Speaker {
 		this.photoUrl = photoUrl;
 	}
 
-	
 }

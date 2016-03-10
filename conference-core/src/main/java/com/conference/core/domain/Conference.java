@@ -1,7 +1,9 @@
 package com.conference.core.domain;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Conference {
 	private String id;
@@ -14,7 +16,7 @@ public class Conference {
 	private Date created;
 	private Date updated;
 	private Place place;
-	private List<Speaker> speakers;
+	private Set<Speaker> speakers;
 
 	public String getId() {
 		return id;
@@ -96,12 +98,16 @@ public class Conference {
 		this.updated = updated;
 	}
 
-	public List<Speaker> getSpeakers() {
+	public Set<Speaker> getSpeakers() {
 		return speakers;
 	}
 
-	public void setSpeakers(List<Speaker> speakers) {
+	public void setSpeakers(Set<Speaker> speakers) {
 		this.speakers = speakers;
 	}
-
+	
+	public void setSpeakers(List<Speaker> speakers) {
+		this.speakers = new HashSet<Speaker>(speakers);
+	}
+	
 }
