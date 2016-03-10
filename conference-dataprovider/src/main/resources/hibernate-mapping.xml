@@ -17,7 +17,27 @@
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
 	</class>
+	
+	<class name="Place" table="PLACES">
+		<id name="id" type="string" column="ID" >
+			<generator class="uuid"/>
+		</id>
+		<property name="countryName" type="string" column="NAME" />
+		<property name="administrativeAreaName" type="string" column="NAME" />
+		<property name="localityName" type="string" column="NAME" />
+		<property name="thoroughfareName" type="string" column="NAME" />
+		<property name="premiseNumber" type="string" column="NAME" />
+		<property name="query" type="string" column="NAME" />
+		<property name="info" type="string" column="NAME" />
+		<property name="positionX" type="float" column="NAME" />
+		<property name="positionY" type="float" column="NAME" />
+		<property name="created" type="timestamp" column="CREATED"
+			insert="false" update="false" />
+		<property name="updated" type="timestamp" column="UPDATED"
+			insert="false" />
+	</class>
 
+	
 	
 
 </hibernate-mapping>
