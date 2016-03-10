@@ -36,6 +36,28 @@
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
 	</class>
+	
+	<class name="Conference" table="CONFERENCES">
+		<id name="id" type="string" column="ID" >
+			<generator class="uuid"/>
+		</id>
+		<property name="title" type="string" column="NAME" />
+		<property name="startTime" type="timestamp" column="CREATED" />
+		<property name="endTime" type="timestamp" column="CREATED" />
+		<property name="placeDetails" type="string" column="NAME" />
+		<property name="logoUrl" type="string" column="NAME" />
+		<property name="videoId" type="string" column="NAME" />
+		<property name="created" type="timestamp" column="CREATED"
+			insert="false" update="false" />
+		<property name="updated" type="timestamp" column="UPDATED"
+			insert="false" />
+		<one-to-one name="place" class="Place">
+			
+		</one-to-one>
+		<list name=""></list>
+		<!-- one to many -->
+				
+	</class>
 
 	
 	
