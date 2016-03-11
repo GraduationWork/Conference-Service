@@ -8,6 +8,7 @@
 		<artifactId>conference-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<packaging>jar</packaging>
 	<artifactId>conference-dataprovider</artifactId>
 	<name>conference-dataprovider</name>
 	<url>http://maven.apache.org</url>

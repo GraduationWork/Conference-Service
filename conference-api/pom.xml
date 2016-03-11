@@ -8,6 +8,7 @@
 		<artifactId>conference-service</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<packaging>war</packaging>
 	<artifactId>conference-api</artifactId>
 	<name>conference-api</name>
 	<url>http://maven.apache.org</url>
@@ -15,7 +16,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>com.kasirau</groupId>
 			<artifactId>conference-core</artifactId>

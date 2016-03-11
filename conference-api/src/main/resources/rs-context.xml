@@ -9,7 +9,9 @@
    						   http://www.springframework.org/schema/util/spring-util-3.0.xsd 
                            http://www.springframework.org/schema/context 
                            http://www.springframework.org/schema/context/spring-context.xsd">
-
+	
+	<import resource="dp-context.xml" />
+	
 	<context:property-placeholder ignore-unresolvable="true"
 		location="file:/etc/fs2go/fsap.dataprovider.config.properties,file:/etc/fs2go/fsap.restfulapi.config.properties" />
 

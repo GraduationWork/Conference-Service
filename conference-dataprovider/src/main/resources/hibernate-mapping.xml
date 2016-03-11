@@ -6,8 +6,8 @@
 <hibernate-mapping package="com.conference.core.domain">
 
 	<class name="Speaker" table="SPEAKERS">
-		<id name="id" type="string" column="ID" >
-			<generator class="uuid"/>
+		<id name="id" type="string" column="ID">
+			<generator class="uuid" />
 		</id>
 		<property name="name" type="string" column="NAME" />
 		<property name="title" type="string" column="TITLE" />
@@ -17,60 +17,51 @@
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
 	</class>
-	
+
 	<class name="Place" table="PLACES">
-		<id name="id" type="string" column="ID" >
-			<generator class="uuid"/>
+		<id name="id" type="string" column="ID">
+			<generator class="uuid" />
 		</id>
-		<property name="countryName" type="string" column="NAME" />
-		<property name="administrativeAreaName" type="string" column="NAME" />
-		<property name="localityName" type="string" column="NAME" />
-		<property name="thoroughfareName" type="string" column="NAME" />
-		<property name="premiseNumber" type="string" column="NAME" />
-		<property name="query" type="string" column="NAME" />
-		<property name="info" type="string" column="NAME" />
-		<property name="positionX" type="float" column="NAME" />
-		<property name="positionY" type="float" column="NAME" />
+		<property name="countryName" type="string" column="COUNTRY_NAME" />
+		<property name="administrativeAreaName" type="string" column="ADMINISTRATIVE_AREA_NAME" />
+		<property name="localityName" type="string" column="LOCALITY_NAME" />
+		<property name="thoroughfareName" type="string" column="THOROUGHFARE_NAME" />
+		<property name="premiseNumber" type="string" column="PREMISE_NUMBER" />
+		<property name="query" type="string" column="QUERY" />
+		<property name="info" type="string" column="INFO" />
+		<property name="positionX" type="float" column="POSITION_X" />
+		<property name="positionY" type="float" column="POSITION_Y" />
 		<property name="created" type="timestamp" column="CREATED"
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
 	</class>
-	
+
 	<class name="Conference" table="CONFERENCES">
-		<id name="id" type="string" column="ID" >
-			<generator class="uuid"/>
+		<id name="id" type="string" column="ID">
+			<generator class="uuid" />
 		</id>
-		<property name="title" type="string" column="NAME" />
-		<property name="startTime" type="timestamp" column="CREATED" />
-		<property name="endTime" type="timestamp" column="CREATED" />
-		<property name="placeDetails" type="string" column="NAME" />
-		<property name="logoUrl" type="string" column="NAME" />
-		<property name="videoId" type="string" column="NAME" />
+		<property name="title" type="string" column="TITLE" />
+		<property name="startTime" type="timestamp" column="START_TIME" />
+		<property name="endTime" type="timestamp" column="END_TIME" />
+		<property name="placeDetails" type="string" column="PLACE_DETAILS" />
+		<property name="logoUrl" type="string" column="LOGO_URL" />
+		<property name="videoId" type="string" column="VIDEO_ID" />
 		<property name="created" type="timestamp" column="CREATED"
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
-		<many-to-one name="place" column="PLACE_ID" class="Place" not-null="true" />
-		<set name="speakers" table="CONFERENCE_SPEAKERS" 
-        	inverse="false" lazy="false" fetch="join" cascade="all">
-            <key>
-                <column name="CONFERENCE_ID"  />
-            </key>
-            <many-to-many entity-name="Speaker">
-                <column name="SPEAKER_ID" not-null="true" />
-            </many-to-many>
-        </set>				
-	</class>
-	
-	<class name="Place" table="PLACES">
-		<id name="username" type="string" column="USERNAME" />
-		<property name="password" type="string" column="PASSWORD" />
-		<property name="isActive" type="boolean" column="IS_ACTIVE" />
-		<property name="created" type="timestamp" column="CREATED"
-			insert="false" update="false" />
-		<property name="updated" type="timestamp" column="UPDATED"
-			insert="false" />
+		<many-to-one name="place" column="PLACE_ID" class="Place"
+			not-null="true" />
+		<set name="speakers" table="CONFERENCE_SPEAKERS" inverse="false"
+			lazy="false" fetch="join" cascade="all">
+			<key>
+				<column name="CONFERENCE_ID" />
+			</key>
+			<many-to-many entity-name="Speaker">
+				<column name="SPEAKER_ID" not-null="true" />
+			</many-to-many>
+		</set>
 	</class>
 
 </hibernate-mapping>

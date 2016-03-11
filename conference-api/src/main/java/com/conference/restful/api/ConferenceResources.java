@@ -10,7 +10,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.conference.dataprovider.services.IConferenceService;
 
 @Component
 @Path("/")
@@ -18,6 +21,9 @@ import org.springframework.stereotype.Component;
 @Produces(MediaType.APPLICATION_JSON)
 public class ConferenceResources {
 
+	@Autowired
+	private IConferenceService conferenceService;
+	
 	@GET
 	public Response getFacebookMapping() {
 		Date time = Calendar.getInstance().getTime();
