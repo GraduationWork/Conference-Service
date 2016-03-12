@@ -1,9 +1,14 @@
 package com.conference.dataprovider.dao.impl;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.NotImplementedException;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -49,6 +54,20 @@ public class HibernateConferenceDao implements IConferenceDao {
 
 	public void deleteConferenceById(String id) {
 		throw new NotImplementedException("method not implemented");
+	}
+
+	@Override
+	public Date readUpdateDate(String id) {
+		Timestamp timestamp = (Timestamp) sessionFactory.getCurrentSession()
+				.createCriteria(Conference.class)
+				.setProjection(Projections.property("updated"))
+				.add(Restrictions.eq("id", id))
+				.setMaxResults(1)
+				.list()
+				.get(0);
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTimeInMillis(timestamp.getTime());
+		return calendar.getTime();
 	}
 
 }

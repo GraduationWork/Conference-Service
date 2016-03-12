@@ -1,5 +1,8 @@
 package com.conference.dataprovider.services.impl;
 
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +32,21 @@ public class ConferenceServiceImpl implements IConferenceService{
 	@Override
 	public void updateConference(Conference conference) {
 		conferenceDao.updateConference(conference);
+	}
+
+	@Override
+	public List<Conference> getConferences() {
+		return conferenceDao.readConferences();
+	}
+
+	@Override
+	public List<Conference> getConferences(int page, int pageSize) {
+		return conferenceDao.readConferences(page, pageSize);
+	}
+
+	@Override
+	public Date getUpdateDate(String id) {
+		return conferenceDao.readUpdateDate(id);
 	}
 	
 }

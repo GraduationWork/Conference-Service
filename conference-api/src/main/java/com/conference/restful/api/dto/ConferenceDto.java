@@ -1,119 +1,111 @@
-package com.conference.core.domain;
+package com.conference.restful.api.dto;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import com.google.common.collect.Lists;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.springframework.beans.BeanUtils;
 
-public class Conference {
+import com.conference.core.domain.Conference;
+import com.conference.restful.api.dto.serializers.JsonDateSerializer;
+
+@JsonSerialize(include=Inclusion.NON_NULL)
+public class ConferenceDto {
+	
+	@JsonProperty("")
 	private String id;
+	
 	private String title;
+	
+	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date startTime;
+	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date endTime;
 	private String placeDetails;
 	private String logoUrl;
 	private String videoId;
+	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date created;
+	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date updated;
-	private Place place;
-	private Set<Speaker> speakers;
-
+	private PlaceDto place;
+	private Set<SpeakerDto> speakers;
+	
+	public ConferenceDto() {
+		
+	}
+	
+	public ConferenceDto(Conference conference) {
+		BeanUtils.copyProperties(conference, this);
+	}
+	
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public Date getStartTime() {
 		return startTime;
 	}
-
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
-
 	public Date getEndTime() {
 		return endTime;
 	}
-
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-
-	public Place getPlace() {
-		return place;
-	}
-
-	public void setPlace(Place place) {
-		this.place = place;
-	}
-
 	public String getPlaceDetails() {
 		return placeDetails;
 	}
-
 	public void setPlaceDetails(String placeDetails) {
 		this.placeDetails = placeDetails;
 	}
-
 	public String getLogoUrl() {
 		return logoUrl;
 	}
-
 	public void setLogoUrl(String logoUrl) {
 		this.logoUrl = logoUrl;
 	}
-
 	public String getVideoId() {
 		return videoId;
 	}
-
 	public void setVideoId(String videoId) {
 		this.videoId = videoId;
 	}
-
 	public Date getCreated() {
 		return created;
 	}
-
 	public void setCreated(Date created) {
 		this.created = created;
 	}
-
 	public Date getUpdated() {
 		return updated;
 	}
-
 	public void setUpdated(Date updated) {
 		this.updated = updated;
 	}
-
-	public Set<Speaker> getSpeakers() {
+	public PlaceDto getPlace() {
+		return place;
+	}
+	public void setPlace(PlaceDto place) {
+		this.place = place;
+	}
+	public Set<SpeakerDto> getSpeakers() {
 		return speakers;
 	}
-	
-	public List<Speaker> getSpeakersAsList() {
-		return Lists.newArrayList(speakers);
-	}
-	
-	public void setSpeakers(Set<Speaker> speakers) {
+	public void setSpeakers(Set<SpeakerDto> speakers) {
 		this.speakers = speakers;
-	}
-	
-	public void setSpeakers(List<Speaker> speakers) {
-		this.speakers = new HashSet<Speaker>(speakers);
 	}
 	
 }

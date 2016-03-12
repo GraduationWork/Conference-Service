@@ -23,7 +23,8 @@
 			<generator class="uuid" />
 		</id>
 		<property name="countryName" type="string" column="COUNTRY_NAME" />
-		<property name="administrativeAreaName" type="string" column="ADMINISTRATIVE_AREA_NAME" />
+		<property name="administrativeAreaName" type="string"
+			column="ADMINISTRATIVE_AREA_NAME" />
 		<property name="localityName" type="string" column="LOCALITY_NAME" />
 		<property name="thoroughfareName" type="string" column="THOROUGHFARE_NAME" />
 		<property name="premiseNumber" type="string" column="PREMISE_NUMBER" />
@@ -51,16 +52,11 @@
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
-		<many-to-one name="place" column="PLACE_ID" class="Place"
+		<many-to-one name="place" column="PLACE_ID" class="Place" lazy="false"
 			not-null="true" />
-		<set name="speakers" table="CONFERENCE_SPEAKERS" inverse="false"
-			lazy="false" fetch="join" cascade="all">
-			<key>
-				<column name="CONFERENCE_ID" />
-			</key>
-			<many-to-many entity-name="Speaker">
-				<column name="SPEAKER_ID" not-null="true" />
-			</many-to-many>
+		<set name="speakers" cascade="all" table="CONFERENCE_SPEAKERS" lazy="false">
+			<key column="CONFERENCE_ID" />
+			<many-to-many column="SPEAKER_ID" class="Speaker" />
 		</set>
 	</class>
 
