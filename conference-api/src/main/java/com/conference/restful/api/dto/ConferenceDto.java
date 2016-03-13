@@ -3,7 +3,8 @@ package com.conference.restful.api.dto;
 import java.util.Date;
 import java.util.Set;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+import javax.validation.constraints.NotNull;
+
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.springframework.beans.BeanUtils;
@@ -14,14 +15,17 @@ import com.conference.restful.api.dto.serializers.JsonDateSerializer;
 @JsonSerialize(include=Inclusion.NON_NULL)
 public class ConferenceDto {
 	
-	@JsonProperty("")
 	private String id;
 	
+	@NotNull
 	private String title;
 	
 	@JsonSerialize(using=JsonDateSerializer.class)
+	@NotNull
 	private Date startTime;
+	
 	@JsonSerialize(using=JsonDateSerializer.class)
+	@NotNull
 	private Date endTime;
 	private String placeDetails;
 	private String logoUrl;
@@ -34,7 +38,6 @@ public class ConferenceDto {
 	private Set<SpeakerDto> speakers;
 	
 	public ConferenceDto() {
-		
 	}
 	
 	public ConferenceDto(Conference conference) {

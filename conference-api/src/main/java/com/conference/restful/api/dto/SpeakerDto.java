@@ -3,9 +3,13 @@ package com.conference.restful.api.dto;
 import java.util.Date;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.springframework.beans.BeanUtils;
 
+import com.conference.core.domain.Speaker;
 import com.conference.restful.api.dto.serializers.JsonDateSerializer;
 
+@JsonSerialize(include=Inclusion.NON_NULL)
 public class SpeakerDto {
 
 	private String id;
@@ -19,6 +23,11 @@ public class SpeakerDto {
 	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date updated;
 
+	public SpeakerDto() {}
+	public SpeakerDto(Speaker speaker) {
+		BeanUtils.copyProperties(speaker, this);
+	}
+	
 	public String getId() {
 		return id;
 	}

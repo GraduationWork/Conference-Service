@@ -12,8 +12,8 @@
 	
 	<import resource="dp-context.xml" />
 	
-	<context:property-placeholder ignore-unresolvable="true"
-		location="file:/etc/fs2go/fsap.dataprovider.config.properties,file:/etc/fs2go/fsap.restfulapi.config.properties" />
+<!-- 	<context:property-placeholder ignore-unresolvable="true" -->
+<!-- 		location="file:/etc/fs2go/fsap.dataprovider.config.properties,file:/etc/fs2go/fsap.restfulapi.config.properties" /> -->
 
 	<context:component-scan base-package="com.conference.restful.api" />
 

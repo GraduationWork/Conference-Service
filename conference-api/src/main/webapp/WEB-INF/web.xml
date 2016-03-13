@@ -14,6 +14,15 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+	<filter>
+	   <filter-name>CORSResponseFilter</filter-name>
+	   <filter-class>com.conference.restful.api.filters.CORSResponseFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CORSResponseFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<servlet>
 		<servlet-name>jersey-serlvet</servlet-name>
 		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>

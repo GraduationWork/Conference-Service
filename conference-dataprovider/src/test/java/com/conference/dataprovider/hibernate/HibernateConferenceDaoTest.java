@@ -39,7 +39,7 @@ public class HibernateConferenceDaoTest {
 	@Qualifier("hibernatePlaceDao")
 	private IPlaceDao placeDao;
 	
-//	@Test
+	@Test
 	public void creationTest() {
 		Speaker speaker = new Speaker();
 		speaker.setName("Александр Кассиров");
@@ -72,7 +72,7 @@ public class HibernateConferenceDaoTest {
 		conferenceDao.createConference(conference);
 	}
 	
-	@Test
+//	@Test
 	public void readConferences() {
 		List<Conference> conferences = conferenceDao.readConferences();
 		conferences.get(0).getPlace();
