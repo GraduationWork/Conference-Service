@@ -26,10 +26,29 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>2.1.0</version>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-tasks</artifactId>
+			<version>v1-rev43-1.21.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client-extensions</artifactId>
+			<version>1.6.0-beta</version>
+		</dependency>
+
+		<!-- OAuth 2.0 dependencies -->
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.0.9.RELEASE</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.auth0</groupId> -->
+		<!-- <artifactId>java-jwt</artifactId> -->
+		<!-- <version>2.1.0</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
@@ -101,6 +120,24 @@
 			<groupId>com.sun.jersey.contribs</groupId>
 			<artifactId>jersey-spring</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>io.jsonwebtoken</groupId> -->
+		<!-- <artifactId>jjwt</artifactId> -->
+		<!-- <version>0.6.0</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.slf4j</groupId>

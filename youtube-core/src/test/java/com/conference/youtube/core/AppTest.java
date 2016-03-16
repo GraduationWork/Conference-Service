@@ -1,4 +1,4 @@
-package com.conference.restful.api;
+package com.conference.youtube.core;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
