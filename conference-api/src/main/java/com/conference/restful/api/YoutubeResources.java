@@ -33,6 +33,17 @@ public class YoutubeResources {
 	
 	public static final String OAUTH_API = "https://accounts.google.com/o/oauth2/auth?client_id=698605801531-furmbme5fbdrt3njt95rrgrn4ed59vc0.apps.googleusercontent.com&redirect_uri=http://localhost:8083/conference-api/oauth2callback&scope=https://www.googleapis.com/auth/youtube&response_type=code&access_type=offline";
 	
+	//Exchange tokens
+	//POST https://developers.google.com/oauthplayground/exchangeAuthCode
+	//{"token_uri":"https://www.googleapis.com/oauth2/v3/token","code":"4/sYp5ynE66WXCzraPpyo30jTa9dkfcQRAtTl9mFWy3ZE"}
+	
+	//Refresh token
+	//POST https://developers.google.com/oauthplayground/refreshAccessToken
+	//{"token_uri":"https://www.googleapis.com/oauth2/v3/token","refresh_token":"1/ZwDzePtSQlLw0qj1nMrKg3Z_tJMJ260eF-RnDXuo5lg"}
+	
+	
+	
+	
 	/*
 	 * public Response addUser(@FormParam("username") String username,
 	 * 
