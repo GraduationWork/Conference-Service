@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-@Path(PlaceResources.RESOURCE_PATH)
+@Path(UserResources.RESOURCE_PATH)
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 public class UserResources {
 	
-	public static final String RESOURCE_PATH = "/speakers";
+	public static final String RESOURCE_PATH = "/users";
 	
 	//register user
 	//get users

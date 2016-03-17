@@ -8,6 +8,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
@@ -37,10 +38,10 @@ public class SpeakerResources {
 		return null;
 	}
 
-	@GET
-	public Response getSpeaker(int page) {
-		return null;
-	}
+//	@GET
+//	public Response getSpeaker(@QueryParam("page") Integer page) {
+//		return null;
+//	}
 
 	@GET
 	@Path("{id}")

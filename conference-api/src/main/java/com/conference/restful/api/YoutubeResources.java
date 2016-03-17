@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 public class YoutubeResources {
 
-	public static final String RESOURCE_PATH = 
+	public static final String RESOURCE_PATH = "oauth2callback";
 	
 	/** The name of the OAuth code URL parameter */
 	public static final String CODE_URL_PARAM_NAME = "code";
@@ -29,6 +30,9 @@ public class YoutubeResources {
 	public static final String URL_MAPPING = "/oauth2callback";
 	public static final String REDIRECT_URL = "/";
 
+	
+	public static final String OAUTH_API = "https://accounts.google.com/o/oauth2/auth?client_id=698605801531-furmbme5fbdrt3njt95rrgrn4ed59vc0.apps.googleusercontent.com&redirect_uri=http://localhost:8083/conference-api/oauth2callback&scope=https://www.googleapis.com/auth/youtube&response_type=code&access_type=offline";
+	
 	/*
 	 * public Response addUser(@FormParam("username") String username,
 	 * 
@@ -50,7 +54,8 @@ public class YoutubeResources {
 	 * }
 	 */
 	@GET
-	public Response youtubeOAuthCallback(@Context UriInfo uriInfo) {
+	public Response youtubeOAuthCallback(@Context UriInfo uriInfo,@Context HttpHeaders headers) {
+		headers.getRequestHeader("conference-id");
 		List<String> error = uriInfo.getQueryParameters().get(
 				ERROR_URL_PARAM_NAME);
 		if (error != null && error.size() > 0) {
@@ -58,24 +63,25 @@ public class YoutubeResources {
 					.entity("There was an error: \"" + error.get(0) + "\".")
 					.build();
 		}
-		List<String> code = uriInfo.getQueryParameters().get(
-				CODE_URL_PARAM_NAME);
+		List<String> code = uriInfo.getQueryParameters().get(CODE_URL_PARAM_NAME);
 		if (code == null || code.size() == 0) {
 			return Response.status(400)
 					.entity("The \"code\" URL parameter is missing").build();
 		}
-		String requestUrl = getOAuthCodeCallbackHandlerUrl(req);
-		AccessTokenResponse accessTokenResponse = exchangeCodeForAccessAndRefreshTokens(
-				code[0], requestUrl);
-		UserService userService = UserServiceFactory.getUserService();
-		String email = userService.getCurrentUser().getEmail();
+//		String requestUrl = getOAuthCodeCallbackHandlerUrl(req);
+		return Response.ok("Success").build();
+		
+//		
+//		AccessTokenResponse accessTokenResponse = exchangeCodeForAccessAndRefreshTokens(
+//				code[0], requestUrl);
+//		UserService userService = UserServiceFactory.getUserService();
+//		String email = userService.getCurrentUser().getEmail();
+//
+//		// save token
+//
+//		java.net.URI location = new java.net.URI(
+//				"../index.jsp?msg=A_User_Added");
 
-		// save token
-
-		java.net.URI location = new java.net.URI(
-				"../index.jsp?msg=A_User_Added");
-
-		return null;
 	}
 
 	/*

@@ -28,8 +28,8 @@ public class PlaceResources {
 
 	public static final String RESOURCE_PATH = "/places";
 	
-	@Autowired
-	private IPlaceService placeService;
+//	@Autowired
+//	private IPlaceService placeService;
 	
 	@GET
 	public Response getPlaces() {
