@@ -13,7 +13,7 @@
 		<module>conference-dataprovider</module>
 		<module>conference-core</module>
 		<module>conference-api</module>
-		<module>youtube-core</module>
+<!-- 		<module>youtube-core</module> -->
 	</modules>
 
 	<properties>

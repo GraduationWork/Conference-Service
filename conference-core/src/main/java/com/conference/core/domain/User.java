@@ -1,6 +1,7 @@
 package com.conference.core.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
@@ -9,7 +10,8 @@ public class User {
 	private boolean isActive;
 	private Date created;
 	private Date updated;
-
+	private List<Roles> roles;
+	
 	public Date getCreated() {
 		return created;
 	}
@@ -48,6 +50,14 @@ public class User {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public List<Roles> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Roles> roles) {
+		this.roles = roles;
 	}
 
 }

@@ -11,7 +11,7 @@
                            http://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<import resource="dp-context.xml" />
-<!-- 	<import resource="rs-security-context.xml" /> -->
+	<import resource="rs-security-context.xml" />
 	
 <!-- 	<context:property-placeholder ignore-unresolvable="true" -->
 <!-- 		location="file:/etc/fs2go/fsap.dataprovider.config.properties,file:/etc/fs2go/fsap.restfulapi.config.properties" /> -->
