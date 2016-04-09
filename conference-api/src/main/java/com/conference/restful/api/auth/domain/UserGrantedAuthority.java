@@ -3,7 +3,7 @@ package com.conference.restful.api.auth.domain;
 import org.apache.commons.lang3.Validate;
 import org.springframework.security.core.GrantedAuthority;
 
-import com.conference.core.domain.Roles;
+import com.conference.core.domain.Role;
 
 public class UserGrantedAuthority implements GrantedAuthority{
 
@@ -11,7 +11,7 @@ public class UserGrantedAuthority implements GrantedAuthority{
 	
 	private String authority;
 	
-	public UserGrantedAuthority(Roles role) {
+	public UserGrantedAuthority(Role role) {
 		Validate.notNull(role);
 		this.authority = role.name();
 	}

@@ -46,37 +46,37 @@ public class HibernateConferenceDaoTest {
 		speaker.setPhotoUrl("https://avatars0.githubusercontent.com/u/7274814?v=3&s=460");
 		speaker.setTitle("Software Engineer в Epam Systems");
 		speakersDao.createSpeaker(speaker);
+//		
+//		Place place = new Place();
+//		place.setAdministrativeAreaName("1");
+//		place.setCountryName("1");
+//		place.setInfo("1");
+//		place.setLocalityName("1");
+//		place.setPositionX((float) 1.0);
+//		place.setPositionY((float) 1.0);
+//		place.setPremiseNumber("1");
+//		place.setQuery("1");
+//		place.setThoroughfareName("1");
+//		placeDao.createPlace(place);
+//		
+//		Conference conference = new Conference();
+//		conference.setLogoUrl("http://vk.com");
+//		conference.setPlace(place);
+//		conference.setPlaceDetails("Кабинет 210");
+//		conference.setSpeakers(Arrays.asList(speaker));
+//		conference.setStartTime(new Date(2016, 5, 24));
+//		conference.setEndTime(new Date(2016, 5, 25));
+//		conference.setTitle("Выпускной вечер ГрГУ");
+//		conference.setVideoId("fake id");
 		
-		Place place = new Place();
-		place.setAdministrativeAreaName("1");
-		place.setCountryName("1");
-		place.setInfo("1");
-		place.setLocalityName("1");
-		place.setPositionX((float) 1.0);
-		place.setPositionY((float) 1.0);
-		place.setPremiseNumber("1");
-		place.setQuery("1");
-		place.setThoroughfareName("1");
-		placeDao.createPlace(place);
-		
-		Conference conference = new Conference();
-		conference.setLogoUrl("http://vk.com");
-		conference.setPlace(place);
-		conference.setPlaceDetails("Кабинет 210");
-		conference.setSpeakers(Arrays.asList(speaker));
-		conference.setStartTime(new Date(2016, 5, 24));
-		conference.setEndTime(new Date(2016, 5, 25));
-		conference.setTitle("Выпускной вечер ГрГУ");
-		conference.setVideoId("fake id");
-		
-		conferenceDao.createConference(conference);
+//		conferenceDao.createConference(conference);
 	}
 	
 //	@Test
 	public void readConferences() {
-		List<Conference> conferences = conferenceDao.readConferences();
-		conferences.get(0).getPlace();
-		conferences.get(0).getSpeakersAsList();
+//		List<Conference> conferences = conferenceDao.readConferences();
+//		conferences.get(0).getPlace();
+//		conferences.get(0).getSpeakersAsList();
 	}
 	
 }

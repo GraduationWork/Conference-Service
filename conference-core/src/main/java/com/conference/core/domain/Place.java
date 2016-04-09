@@ -4,112 +4,76 @@ import java.util.Date;
 
 public class Place {
 	private String id;
-	private String countryName;
-	private String administrativeAreaName;
-	private String localityName;
-	private String thoroughfareName;
-	private String premiseNumber;
-	private String query;
-	private String info;
+	private String country;
+	private String administrativeArea;
+	private String city;
+	private String street;
+	private String streetNumber;
 	private float positionX;
 	private float positionY;
 	private Date created;
 	private Date updated;
-
-	public Date getCreated() {
-		return created;
-	}
-
-	public void setCreated(Date created) {
-		this.created = created;
-	}
-
-	public Date getUpdated() {
-		return updated;
-	}
-
-	public void setUpdated(Date updated) {
-		this.updated = updated;
-	}
-
+	
+	
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public String getCountryName() {
-		return countryName;
+	public String getCountry() {
+		return country;
 	}
-
-	public void setCountryName(String countryName) {
-		this.countryName = countryName;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-
-	public String getAdministrativeAreaName() {
-		return administrativeAreaName;
+	public String getAdministrativeArea() {
+		return administrativeArea;
 	}
-
-	public void setAdministrativeAreaName(String administrativeAreaName) {
-		this.administrativeAreaName = administrativeAreaName;
+	public void setAdministrativeArea(String administrativeArea) {
+		this.administrativeArea = administrativeArea;
 	}
-
-	public String getLocalityName() {
-		return localityName;
+	public String getCity() {
+		return city;
 	}
-
-	public void setLocalityName(String localityName) {
-		this.localityName = localityName;
+	public void setCity(String city) {
+		this.city = city;
 	}
-
-	public String getThoroughfareName() {
-		return thoroughfareName;
+	public String getStreet() {
+		return street;
 	}
-
-	public void setThoroughfareName(String thoroughfareName) {
-		this.thoroughfareName = thoroughfareName;
+	public void setStreet(String street) {
+		this.street = street;
 	}
-
-	public String getPremiseNumber() {
-		return premiseNumber;
+	public String getStreetNumber() {
+		return streetNumber;
 	}
-
-	public void setPremiseNumber(String premiseNumber) {
-		this.premiseNumber = premiseNumber;
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
 	}
-
-	public String getQuery() {
-		return query;
-	}
-
-	public void setQuery(String query) {
-		this.query = query;
-	}
-
-	public String getInfo() {
-		return info;
-	}
-
-	public void setInfo(String info) {
-		this.info = info;
-	}
-
 	public float getPositionX() {
 		return positionX;
 	}
-
 	public void setPositionX(float positionX) {
 		this.positionX = positionX;
 	}
-
 	public float getPositionY() {
 		return positionY;
 	}
-
 	public void setPositionY(float positionY) {
 		this.positionY = positionY;
+	}
+	public Date getCreated() {
+		return created;
+	}
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+	public Date getUpdated() {
+		return updated;
+	}
+	public void setUpdated(Date updated) {
+		this.updated = updated;
 	}
 
 }

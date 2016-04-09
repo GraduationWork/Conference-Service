@@ -12,13 +12,20 @@ public class Conference {
 	private String title;
 	private Date startTime;
 	private Date endTime;
-	private String placeDetails;
-	private String logoUrl;
 	private String videoId;
 	private Date created;
 	private Date updated;
 	private Place place;
+	private String placeDetails;
+	private Template template;
+	private Set<Tag> tags;
+	private Set<Stakeholder> stakeholders;
+//	private Agenda agenda;
 	private Set<Speaker> speakers;
+
+	public List<Speaker> getSpeakersAsList() {
+		return Lists.newArrayList(speakers);
+	}
 
 	public String getId() {
 		return id;
@@ -52,30 +59,6 @@ public class Conference {
 		this.endTime = endTime;
 	}
 
-	public Place getPlace() {
-		return place;
-	}
-
-	public void setPlace(Place place) {
-		this.place = place;
-	}
-
-	public String getPlaceDetails() {
-		return placeDetails;
-	}
-
-	public void setPlaceDetails(String placeDetails) {
-		this.placeDetails = placeDetails;
-	}
-
-	public String getLogoUrl() {
-		return logoUrl;
-	}
-
-	public void setLogoUrl(String logoUrl) {
-		this.logoUrl = logoUrl;
-	}
-
 	public String getVideoId() {
 		return videoId;
 	}
@@ -100,20 +83,52 @@ public class Conference {
 		this.updated = updated;
 	}
 
+	public Place getPlace() {
+		return place;
+	}
+
+	public void setPlace(Place place) {
+		this.place = place;
+	}
+
+	public String getPlaceDetails() {
+		return placeDetails;
+	}
+
+	public void setPlaceDetails(String placeDetails) {
+		this.placeDetails = placeDetails;
+	}
+
+	public Template getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(Template template) {
+		this.template = template;
+	}
+
+	public Set<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(Set<Tag> tags) {
+		this.tags = tags;
+	}
+
+	public Set<Stakeholder> getStakeholders() {
+		return stakeholders;
+	}
+
+	public void setStakeholders(Set<Stakeholder> stakeholders) {
+		this.stakeholders = stakeholders;
+	}
+
 	public Set<Speaker> getSpeakers() {
 		return speakers;
 	}
-	
-	public List<Speaker> getSpeakersAsList() {
-		return Lists.newArrayList(speakers);
-	}
-	
+
 	public void setSpeakers(Set<Speaker> speakers) {
 		this.speakers = speakers;
-	}
-	
-	public void setSpeakers(List<Speaker> speakers) {
-		this.speakers = new HashSet<Speaker>(speakers);
 	}
 	
 }

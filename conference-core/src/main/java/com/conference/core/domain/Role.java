@@ -1,7 +1,7 @@
 package com.conference.core.domain;
 
 public enum Role {
-	ADMINISTRATOR,
-	MANAGER,
-	USER
+	ROLE_CONFERENCE_ADMIN,
+	ROLE_CONFERENCE_MODERATOR,
+	ROLE_CONFERENCE_USER
 }

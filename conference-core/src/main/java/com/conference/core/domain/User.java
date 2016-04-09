@@ -4,13 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 public class User {
-
 	private String username;
 	private String password;
 	private boolean isActive;
 	private Date created;
 	private Date updated;
-	private List<Roles> roles;
+	private List<Role> roles;
 	
 	public Date getCreated() {
 		return created;
@@ -52,11 +51,11 @@ public class User {
 		this.isActive = isActive;
 	}
 
-	public List<Roles> getRoles() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Roles> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
