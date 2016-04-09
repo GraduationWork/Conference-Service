@@ -11,21 +11,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.Validate;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.auth0.jwt.JWTVerifier;
 import com.conference.restful.api.auth.exceptions.JwtTokenMissingException;
 
 public class JwtAuthFilter implements Filter{
 
-//	private JWTVerifier jwtVerifier;
-	
-	private JwtAuthFilter() {}
-//	public JwtAuthFilter(String secret) {
-//		Validate.notEmpty(secret);
-//		this.jwtVerifier = new JWTVerifier(secret);
-//	}
+	public JwtAuthFilter() {}
 	
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res,

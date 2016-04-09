@@ -8,8 +8,6 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.conference.core.domain.Roles;
-import com.conference.core.domain.User;
 import com.conference.restful.api.auth.utils.AuthUtils;
 
 public class AuthenticatedUser implements UserDetails{
@@ -17,29 +15,32 @@ public class AuthenticatedUser implements UserDetails{
 	private String username;
 	private String password;
 	private boolean isActive;
-	private List<Roles> roles;
+	private List<GrantedAuthority> roles;
 	
+	@SuppressWarnings("unchecked")
 	public AuthenticatedUser(Map<String,Object> claims) {
 		Validate.notEmpty(claims);
 		this.username = (String) claims.get("username");
 		this.password = (String) claims.get("password");
 		this.isActive = (boolean) claims.get("isActive");
-		this.roles = (List<Roles>) claims.get("roles");
+		
+		List<String> roles = (List<String>) claims.get("roles");
+		this.roles = AuthUtils.convertRoles(roles);
 	}
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return AuthUtils.convertRoles(user.getRoles());
+		return roles;
 	}
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return password;
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return username;
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class AuthenticatedUser implements UserDetails{
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return user.isActive();
+		return isActive;
 	}
 
 	@Override
@@ -59,7 +60,7 @@ public class AuthenticatedUser implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		return user.isActive();
+		return isActive;
 	}
 
 }

@@ -15,6 +15,10 @@ public class UserGrantedAuthority implements GrantedAuthority{
 		Validate.notNull(role);
 		this.authority = role.name();
 	}
+	public UserGrantedAuthority(String role) {
+		Validate.notEmpty(role);
+		this.authority = role;
+	}
 
 	@Override
 	public String getAuthority() {

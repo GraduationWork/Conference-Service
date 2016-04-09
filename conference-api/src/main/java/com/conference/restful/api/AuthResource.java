@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWTSigner;
 import com.conference.core.domain.Roles;
-import com.conference.core.domain.User;
 
 
 @Component
@@ -35,7 +34,7 @@ public class AuthResource {
 		claims.put("username", "Aliaksandr_Kassirau");
 		claims.put("password", "0");
 		claims.put("isActive", true);
-		claims.put("roles", Arrays.asList(Roles.CONFERENCE_ADMIN, Roles.CONFERENCE_MODERATOR, Roles.CONFERENCE_USER));
+		claims.put("roles", Arrays.asList(Roles.ROLE_CONFERENCE_ADMIN, Roles.ROLE_CONFERENCE_MODERATOR, Roles.ROLE_CONFERENCE_USER));
 		String token = jwtSigner.sign(claims);
 		return Response.ok().entity(token).build();
 	}

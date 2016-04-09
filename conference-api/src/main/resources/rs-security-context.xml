@@ -7,9 +7,10 @@
 
 	<security:http use-expressions="true" create-session="stateless"
 		entry-point-ref="http403EntryPoint">
+		<security:csrf disabled="true"/>
 		<security:intercept-url pattern="/authenticate" method="GET" access="permitAll" />
-		<security:intercept-url pattern="/conferences" access="hasRole('CONFERENCE_USER')" />
-		<security:intercept-url pattern="/**" access="permitAll" />
+<!-- 		<security:intercept-url pattern="/conferences" method="GET" access="permitAll" /> -->
+		<security:intercept-url pattern="/conferences" access="hasRole('CONFERENCE_ADMIN')" />
 		<security:custom-filter ref="jwtAuthenticationFilter"
 			before="ANONYMOUS_FILTER" />
 	</security:http>

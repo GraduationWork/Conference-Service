@@ -16,7 +16,6 @@ public class JWTAuthenticationProvider extends AbstractUserDetailsAuthentication
 
 	private JWTVerifier jwtVerifier;
 	
-	private JWTAuthenticationProvider(){}
 	public JWTAuthenticationProvider(String secret) {
 		Validate.notNull(secret);
 		this.jwtVerifier = new JWTVerifier(secret);
