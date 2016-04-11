@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWTSigner;
-import com.conference.core.domain.Role;
+import com.conference.dataprovider.domain.Role;
 
 
 @Component

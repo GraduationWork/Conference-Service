@@ -13,12 +13,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.conference.core.domain.Conference;
-import com.conference.core.domain.Place;
-import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.IConferenceDao;
 import com.conference.dataprovider.dao.IPlaceDao;
 import com.conference.dataprovider.dao.ISpeakersDao;
+import com.conference.dataprovider.domain.Conference;
+import com.conference.dataprovider.domain.Place;
+import com.conference.dataprovider.domain.Speaker;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:dp-context.xml" })

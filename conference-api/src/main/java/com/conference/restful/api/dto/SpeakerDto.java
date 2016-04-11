@@ -6,7 +6,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.springframework.beans.BeanUtils;
 
-import com.conference.core.domain.Speaker;
+import com.conference.dataprovider.domain.Speaker;
 import com.conference.restful.api.dto.serializers.JsonDateSerializer;
 
 @JsonSerialize(include=Inclusion.NON_NULL)

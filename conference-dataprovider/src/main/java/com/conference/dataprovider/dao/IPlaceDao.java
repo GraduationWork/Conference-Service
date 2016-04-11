@@ -2,7 +2,7 @@ package com.conference.dataprovider.dao;
 
 import java.util.List;
 
-import com.conference.core.domain.Place;
+import com.conference.dataprovider.domain.Place;
 
 public interface IPlaceDao {
 	public void createPlace(Place place);

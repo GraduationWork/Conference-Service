@@ -22,7 +22,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.conference.core.domain.Conference;
+import com.conference.dataprovider.domain.Conference;
 import com.conference.dataprovider.services.IConferenceService;
 import com.conference.restful.api.dto.ConferenceDto;
 

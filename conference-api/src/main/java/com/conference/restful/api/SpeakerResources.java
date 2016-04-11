@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.conference.core.domain.Speaker;
+import com.conference.dataprovider.domain.Speaker;
 import com.conference.dataprovider.services.ISpeakersService;
 import com.conference.restful.api.dto.SpeakerDto;
 
