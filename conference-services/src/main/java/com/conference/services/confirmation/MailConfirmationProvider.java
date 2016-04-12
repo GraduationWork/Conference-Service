@@ -8,12 +8,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 import com.conference.dataprovider.domain.User;
-import com.conference.services.mail.IMessageComposer;
+import com.conference.services.common.composers.IMessageComposer;
 
 public class MailConfirmationProvider implements IConfirmationProvider{
 
 	private JavaMailSender mailSender;
-	private IMessageComposer messageComposer
+	private IMessageComposer messageComposer;
 	
 	public MailConfirmationProvider(JavaMailSender mailSender) {
 		Validate.notNull(mailSender);

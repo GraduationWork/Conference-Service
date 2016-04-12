@@ -49,6 +49,11 @@ public class MongoUserDao implements IUserDao{
 		Query searchUserQuery = new Query(Criteria.where("username").is(username));
 		mongoOperations.findAndModify(searchUserQuery, Update.update("isActive", active), User.class);
 	}
+
+	@Override
+	public boolean exists(String username) {
+		throw new NotImplementedException("");
+	}
 	
 	
 
