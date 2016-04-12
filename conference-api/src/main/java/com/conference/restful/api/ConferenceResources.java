@@ -23,8 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.conference.dataprovider.domain.Conference;
-import com.conference.dataprovider.services.IConferenceService;
 import com.conference.restful.api.dto.ConferenceDto;
+import com.conference.services.IConferenceService;
 
 @Component
 @Path(ConferenceResources.RESOURCE_PATH)

@@ -6,6 +6,7 @@ import com.conference.dataprovider.domain.User;
 
 public interface IUserDao {
 	public void createUser(User user);
+	public boolean exists(String username);
 	public User readUserByUsername(String username);
 	public List<User> readUsers();
 	public List<User> readUsers(int page, int pageSize);

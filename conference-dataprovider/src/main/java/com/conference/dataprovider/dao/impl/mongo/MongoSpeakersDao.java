@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
-import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.ISpeakersDao;
+import com.conference.dataprovider.domain.Speaker;
 
 @Repository
 public class MongoSpeakersDao implements ISpeakersDao{
@@ -51,7 +51,7 @@ public class MongoSpeakersDao implements ISpeakersDao{
 		Query searchUserQuery = new Query(Criteria.where("id").is(speaker.getId()));	
 		
 		Update update = new Update();
-		update.
+//		update.
 		
 //		mongoOperations.findAndModify(searchUserQuery, Update.fromDBObject(speaker)), Speaker.class);
 //		mongoOperations.findAndModify(searchUserQuery, Update.update("name", speaker.getName()), Speaker.class);

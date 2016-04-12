@@ -6,19 +6,24 @@ import org.springframework.stereotype.Service;
 import com.conference.dataprovider.dao.IUserDao;
 import com.conference.dataprovider.domain.User;
 import com.conference.services.IUserService;
+import com.conference.services.confirmation.IConfirmationProvider;
 
 @Service
 public class UserServiceImpl implements IUserService {
 
 	private IUserDao userDao;
-	
+	private IConfirmationProvider confirmationProvider;
+
 	@Autowired
-	public UserServiceImpl(IUserDao userDao) {
+	public UserServiceImpl(IUserDao userDao,
+			IConfirmationProvider confirmationProvider) {
 		this.userDao = userDao;
-	} 
-	
+		this.confirmationProvider = confirmationProvider;
+	}
+
 	@Override
-	public void createUser(User user) {
+	public void registerUser(User user) {
+		userDao.exists(user.getUsername());
 		userDao.createUser(user);
 	}
 

@@ -25,7 +25,11 @@ public class AuthResource {
 
 	public static final String RESOURCE_PATH = "/authenticate";
 	
+	
 	private JWTSigner jwtSigner = new JWTSigner("SECRET");
+	
+	
+	
 	
 	@GET
 	//UserDto userDto
