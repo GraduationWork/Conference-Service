@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kasirau</groupId>
 	<artifactId>conference-service</artifactId>
@@ -12,9 +13,9 @@
 		<module>conference-dataprovider</module>
 		<module>conference-core</module>
 		<module>conference-api</module>
-<!-- 		<module>youtube-core</module> -->
-    	<module>conference-services</module>
-  </modules>
+		<!-- <module>youtube-core</module> -->
+		<module>conference-services</module>
+	</modules>
 
 	<properties>
 		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>
@@ -46,7 +47,7 @@
 			<dependency>
 				<groupId>javax.validation</groupId>
 				<artifactId>validation-api</artifactId>
-				<version>1.0.0.GA</version>
+				<version>1.1.0.Final</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
@@ -120,6 +121,18 @@
 				<artifactId>spring-aop</artifactId>
 				<version>${org.springframework.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+
+
 
 
 			<!-- Jersey + Spring -->

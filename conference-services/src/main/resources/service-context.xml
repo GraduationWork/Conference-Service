@@ -12,43 +12,48 @@
 	   http://www.springframework.org/schema/util 
 	   http://www.springframework.org/schema/util/spring-util.xsd">
 
-	<import resource="classpath:dp-context.xml"/>
+<!-- 	<import resource="classpath:dp-context.xml"/> -->
 
-	<context:component-scan base-package="com.conference.services" />
+<!-- 	<context:component-scan base-package="com.conference.services" /> -->
 
-	<bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>file:/etc/properties/conference.dataprovider.properties
-				</value>
-			</list>
+<!-- 	<bean -->
+<!-- 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 		<property name="locations"> -->
+<!-- 			<list> -->
+<!-- 				<value>file:/etc/properties/conference.dataprovider.properties -->
+<!-- 				</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="${email.username}" />
+		<property name="password" value="${email.password}" />
+	
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.quitwait">false</prop>
+			</props>
 		</property>
 	</bean>
 	
-	<bean name="pollingConnectionFactory"
-		class="org.springframework.jms.connection.CachingConnectionFactory">
-		<constructor-arg>
-			<bean name="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
-				<property name="brokerURL" value="${conference.jms.listener.brokerURL}" />
-			</bean>
-		</constructor-arg>
+	<bean id="xsltTransformer" class="com.conference.services.common.transformers.XsltTransformer"/>
+	<bean id="springMailSender" class="com.conference.services.common.mail.SpringMailSender">
+		<constructor-arg name="mailSender" ref="mailSender" />
+	</bean>
+	<bean id="userMimeMessageMailComposer" class="com.conference.services.common.composers.UserMimeMessageMailComposer">
+		<constructor-arg name="transformer" ref="xsltTransformer" />
+		<constructor-arg name="sessionProvider" ref="springMailSender" />
+	</bean>
+	<bean id="userMailVerifier" class="com.conference.services.common.MailVerifierService">
+		<constructor-arg name="mailSender" ref="springMailSender" />
+		<constructor-arg name="messageComposer" ref="userMimeMessageMailComposer" />
 	</bean>
 	
-	<bean id="producerTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
-		<property name="connectionFactory" ref="pollingConnectionFactory"/>
-	</bean>
-    
-	<bean id="feedPollingJMSTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<property name="connectionFactory" ref="pollingConnectionFactory"/>
-		<property name="defaultDestination">
-			<bean id="recipientQueue" class="org.apache.activemq.command.ActiveMQQueue">
-		        <constructor-arg value="com.conference.registration.queue"/>
-		    </bean>
-		</property>
-		<property name="sessionTransacted" value="true" />
-		<property name="sessionAcknowledgeModeName" value="SESSION_TRANSACTED"/>
-	</bean>
-
-
+	
 </beans>

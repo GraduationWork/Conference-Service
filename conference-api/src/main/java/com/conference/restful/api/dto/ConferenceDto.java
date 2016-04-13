@@ -5,14 +5,11 @@ import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.springframework.beans.BeanUtils;
 
 import com.conference.dataprovider.domain.Conference;
-import com.conference.restful.api.dto.serializers.JsonDateSerializer;
 
-@JsonSerialize(include=Inclusion.NON_NULL)
+//@JsonSerialize(include=Inclusion.NON_NULL)
 public class ConferenceDto {
 	
 	private String id;
@@ -20,19 +17,17 @@ public class ConferenceDto {
 	@NotNull
 	private String title;
 	
-	@JsonSerialize(using=JsonDateSerializer.class)
+//	@JsonSerialize(using=JsonDateSerializer.class)
 	@NotNull
 	private Date startTime;
 	
-	@JsonSerialize(using=JsonDateSerializer.class)
+//	@JsonSerialize(using=JsonDateSerializer.class)
 	@NotNull
 	private Date endTime;
 	private String placeDetails;
 	private String logoUrl;
 	private String videoId;
-	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date created;
-	@JsonSerialize(using=JsonDateSerializer.class)
 	private Date updated;
 	private PlaceDto place;
 	private Set<SpeakerDto> speakers;
