@@ -50,4 +50,9 @@ public class UserServiceImpl implements IUserService {
 		return userDao.exists(username);
 	}
 
+	@Override
+	public void deleteUser(String username) {
+		userDao.deleteUser(username);
+	}
+
 }

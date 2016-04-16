@@ -10,8 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 	@Id
 	private String username;
-	private String email;
 	private String password;
+	private String email;
+	private String firstname;
+	private String lastname;
 	private boolean isActive;
 	private Date created;
 	private Date updated;
@@ -73,4 +75,22 @@ public class User {
 		this.email = email;
 	}
 
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	
+	
 }

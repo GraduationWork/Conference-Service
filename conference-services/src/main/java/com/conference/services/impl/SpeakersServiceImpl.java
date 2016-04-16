@@ -8,11 +8,11 @@ import com.conference.dataprovider.dao.ISpeakersDao;
 import com.conference.dataprovider.domain.Speaker;
 import com.conference.services.ISpeakersService;
 
-@Service("speakersServiceImpl")
-@Transactional
+//@Service("speakersServiceImpl")
+//@Transactional
 public class SpeakersServiceImpl implements ISpeakersService {
 
-	@Autowired
+//	@Autowired
 	private ISpeakersDao speakersDao;
 	
 	@Override

@@ -12,4 +12,5 @@ public interface IUserDao {
 	public List<User> readUsers(int page, int pageSize);
 	public void updateUser(User user);
 	public void activateUser(String username, boolean active);
+	public void deleteUser(String username);
 }

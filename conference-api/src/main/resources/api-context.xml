@@ -12,10 +12,6 @@
 	<context:component-scan base-package="com.conference.restful.api.controllers" />
 	
 	<import resource="rs-security-context.xml" />
-<!-- 	<import resource="rs-context.xml" /> -->
-<!-- 	<context:property-placeholder ignore-unresolvable="true" -->
-<!-- 		location="file:/etc/fs2go/fsap.dataprovider.config.properties,file:/etc/fs2go/fsap.restfulapi.config.properties" /> -->
-
-
+	<import resource="service-context.xml" />
 
 </beans>

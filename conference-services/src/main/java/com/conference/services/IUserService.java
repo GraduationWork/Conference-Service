@@ -7,4 +7,5 @@ public interface IUserService {
 	public User getUser(String username);
 	public void activateUser(String username, boolean isActive);
 	public boolean isUsernameExist(String username);
+	public void deleteUser(String username);
 }

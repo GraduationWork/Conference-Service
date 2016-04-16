@@ -52,7 +52,12 @@ public class MongoUserDao implements IUserDao{
 
 	@Override
 	public boolean exists(String username) {
-		throw new NotImplementedException("");
+		return mongoOperations.exists(Query.query(Criteria.where("username").is(username)), User.class);
+	}
+
+	@Override
+	public void deleteUser(String username) {
+		mongoOperations.remove(mongoOperations.findById(username, User.class));
 	}
 	
 	

@@ -11,13 +11,13 @@ import com.conference.dataprovider.dao.IYoutubePageDao;
 import com.conference.dataprovider.domain.YoutubePage;
 import com.conference.services.IYoutubePageService;
 
-@Service
-@Transactional
+//@Service
+//@Transactional
 public class YoutubePageServiceImpl implements IYoutubePageService {
 
 	private IYoutubePageDao youtubePageDao;
 	
-	@Autowired
+//	@Autowired
 	public YoutubePageServiceImpl(IYoutubePageDao youtubePageDao) {
 		Validate.notNull(youtubePageDao);
 		this.youtubePageDao = youtubePageDao;

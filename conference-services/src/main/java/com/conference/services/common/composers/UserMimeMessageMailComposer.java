@@ -22,16 +22,19 @@ public class UserMimeMessageMailComposer implements
 
 	private ITransformer<File, String> transformer;
 	private ISessionProvider<MimeMessage> sessionProvider;
+	private File template;
 
 	// private IMailConfiguration configuration;
 
 	public UserMimeMessageMailComposer(ITransformer<File, String> transformer,
-			ISessionProvider<MimeMessage> sessionProvider) {
+			ISessionProvider<MimeMessage> sessionProvider, File template) {
 		Validate.notNull(transformer);
 		Validate.notNull(sessionProvider);
+		Validate.notNull(template);
 		// Validate.notNull(configuration);
 		this.transformer = transformer;
 		this.sessionProvider = sessionProvider;
+		this.template = template;
 		// this.configuration = configuration;
 	}
 
@@ -40,11 +43,7 @@ public class UserMimeMessageMailComposer implements
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("name", user.getUsername());
-			String emailContent = transformer
-					.transform(
-							new File(this.getClass()
-									.getResource("/xslt/invitation.xslt").toURI()),
-							params);
+			String emailContent = transformer.transform(template, params);
 			MimeMessage message = sessionProvider.createMessage();
 			message.setFrom(new InternetAddress("conference@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
@@ -55,7 +54,7 @@ public class UserMimeMessageMailComposer implements
 		} catch (Exception e) {
 			throw new ServiceException(e.getMessage());
 		}
-		
+
 	}
 
 }

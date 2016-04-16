@@ -11,12 +11,12 @@ import com.conference.dataprovider.domain.Conference;
 import com.conference.services.IConferenceService;
 
 
-@Service("conferenceServiceImpl")
+//@Service("conferenceServiceImpl")
 public class ConferenceServiceImpl implements IConferenceService{
 
 	private IConferenceDao conferenceDao;
 
-	@Autowired
+//	@Autowired
 	public ConferenceServiceImpl(IConferenceDao conferenceDao) {
 		this.conferenceDao = conferenceDao;
 	}
