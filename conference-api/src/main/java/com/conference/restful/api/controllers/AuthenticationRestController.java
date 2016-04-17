@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.auth0.jwt.JWTSigner;
 import com.conference.restful.api.dto.LoginDto;
-import com.conference.restful.api.dto.UserDto;
 import com.conference.services.IUserService;
 
 @RestController

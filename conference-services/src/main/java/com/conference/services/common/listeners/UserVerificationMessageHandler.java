@@ -1,4 +1,6 @@
-package com.conference.services.common;
+package com.conference.services.common.listeners;
+
+import java.io.Serializable;
 
 import javax.mail.internet.MimeMessage;
 
@@ -8,28 +10,29 @@ import com.conference.dataprovider.domain.User;
 import com.conference.services.common.composers.IMessageComposer;
 import com.conference.services.common.mail.IMailSender;
 
-public class MailVerifierService implements IUserVerifierService {
+public class UserVerificationMessageHandler implements IMessageHandler {
 
 	private IMailSender<MimeMessage> mailSender;
 	private IMessageComposer<User, MimeMessage> messageComposer;
-
-	public MailVerifierService(IMailSender<MimeMessage> mailSender,
+	
+	public UserVerificationMessageHandler(IMailSender<MimeMessage> mailSender,
 			IMessageComposer<User, MimeMessage> messageComposer) {
 		Validate.notNull(mailSender);
 		Validate.notNull(messageComposer);
 		this.mailSender = mailSender;
 		this.messageComposer = messageComposer;
 	}
-
+	
+	
 	@Override
-	public void sendVerification(User user) {
-		MimeMessage message = messageComposer.compose(user);
-		mailSender.send(message);
-	}
-
-	@Override
-	public void confirmVerification() {
-		// TODO Auto-generated method stub
+	public void handleMessage(Serializable message) {
+		if (message instanceof User) {
+			User user = (User) message;
+			MimeMessage mailMessage = messageComposer.compose(user);
+			mailSender.send(mailMessage);
+		} else {
+			//logging
+		}
 	}
 
 }

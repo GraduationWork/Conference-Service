@@ -36,13 +36,15 @@ public class UsersRestController {
 	@RequestMapping(method=RequestMethod.POST, value="/resend")
 	public ResponseEntity<?> resendVerificationEmail(@RequestParam String token) {
 //		userService.activateUser(username, true);
-		return new ResponseEntity<UserDto>(new UserDto(userService.getUser(username)),HttpStatus.OK);
+//		return new ResponseEntity<UserDto>(new UserDto(userService.getUser(username)),HttpStatus.OK);
+		return null;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/verify")
 	public ResponseEntity<?> verifyEmail(@RequestParam String token) {
 //		userService.activateUser(username, true);
-		return new ResponseEntity<UserDto>(new UserDto(userService.getUser(username)),HttpStatus.OK);
+//		return new ResponseEntity<UserDto>(new UserDto(userService.getUser(username)),HttpStatus.OK);
+		return null;
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/reject")

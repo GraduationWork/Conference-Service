@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.conference.dataprovider.dao.IUserDao;
 import com.conference.dataprovider.domain.User;
 import com.conference.services.IUserService;
-import com.conference.services.common.IUserVerifierService;
 import com.conference.services.common.sender.Action;
 import com.conference.services.common.sender.INotificationSender;
 import com.conference.services.exceptions.UserAlreadyExistException;
@@ -17,18 +16,19 @@ import com.conference.services.verification.user.IUserIdentifierVerifier;
 public class UserServiceImpl implements IUserService {
 
 	private IUserDao userDao;
-	private IUserVerifierService verifierService;
 	private INotificationSender<User> notificationSender;
+	private IUserIdentifierVerifier userIdentifierVerifier;
 
 	@Autowired
 	public UserServiceImpl(IUserDao userDao,
-			IUserVerifierService verifierService,
+			INotificationSender<User> notificationSender,
 			IUserIdentifierVerifier userIdentifierVerifier) {
 		Validate.notNull(userDao);
-		Validate.notNull(verifierService);
+		Validate.notNull(notificationSender);
 		Validate.notNull(userIdentifierVerifier);
 		this.userDao = userDao;
-		this.verifierService = verifierService;
+		this.notificationSender = notificationSender;
+		this.userIdentifierVerifier = userIdentifierVerifier;
 	}
 
 	@Override

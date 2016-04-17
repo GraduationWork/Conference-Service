@@ -13,18 +13,48 @@
 	   http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<bean name="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory" scope="prototype">
-		<property name="brokerURL" value="${deliveryservice.jms.listener.brokerURL}" />
+		<property name="brokerURL" value="failover:(tcp://127.0.0.1:61616)?randomize=false" />
 	</bean>
 	
-	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+	<bean id="consumerConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory" scope="prototype">
         <constructor-arg ref="amqConnectionFactory" />
     </bean>
+    
+    <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager" scope="prototype">
+		<property name="connectionFactory" ref="consumerConnectionFactory"/>
+	</bean>
+	
+	<bean id="userVerificationMessageListener" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+	    <constructor-arg>
+	    	<bean class="com.conference.services.common.listeners.UserVerificationMessageHandler">
+	    		<constructor-arg name="mailSender" ref="springMailSender" />
+				<constructor-arg name="messageComposer" ref="userMimeMessageMailComposer" />
+	    	</bean>
+	    </constructor-arg>
+	</bean>
+
+	<bean id="userVerificationJmsContainer" class="com.conference.services.amq.MessageListenerContainer">
+		<constructor-arg name="queueName" value="com.conference.user.verification.queue" />
+		<constructor-arg name="sessionTransacted" value="true" />
+		<constructor-arg name="concurrentConsumers" value="2" />
+		<constructor-arg name="messageListener" ref="userVerificationMessageListener" />
+	</bean>
+
 
 	<bean id="userVerificationJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="connectionFactory" ref="consumerConnectionFactory" />
 		<property name="defaultDestination">
 			<bean class="org.apache.activemq.command.ActiveMQQueue">
-				<constructor-arg value="com.foxsports.deliveryservice.queue.facebook" />
+				<constructor-arg value="com.conference.user.verification.queue" />
+			</bean>
+		</property>
+		<property name="sessionTransacted" value="true" />
+	</bean>
+	<bean id="registrationOnConferenceJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="consumerConnectionFactory" />
+		<property name="defaultDestination">
+			<bean class="org.apache.activemq.command.ActiveMQQueue">
+				<constructor-arg value="com.conference.registration.on.conference.queue" />
 			</bean>
 		</property>
 		<property name="sessionTransacted" value="true" />
@@ -33,11 +63,12 @@
 	<bean id="amqNotificationSender"
 		class="com.conference.services.common.sender.ActiveMQNotificationSender">
 		<constructor-arg name="jmsTemplates">
-			<map>
-				<entry>
-				</entry>
+			<map key-type="com.conference.services.common.sender.Action">
+				<entry key="VERIFY_USER" value-ref="userVerificationJmsTemplate" />
+				<entry key="REGISTER_ON_CONFERENCE" value-ref="registrationOnConferenceJmsTemplate" />
 			</map>
 		</constructor-arg>
 	</bean>
-
+	
+	
 </beans>
