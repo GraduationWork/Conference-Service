@@ -9,6 +9,7 @@ import org.springframework.beans.BeanUtils;
 import com.conference.dataprovider.domain.Speaker;
 
 //@JsonSerialize(include=Inclusion.NON_NULL)
+//@XmlRootElement
 public class SpeakerDto {
 
 	private String id;
@@ -27,6 +28,7 @@ public class SpeakerDto {
 		BeanUtils.copyProperties(speaker, this);
 	}
 	
+//	@XmlElement
 	public String getId() {
 		return id;
 	}
@@ -35,6 +37,7 @@ public class SpeakerDto {
 		this.id = id;
 	}
 
+//	@XmlElement
 	public String getName() {
 		return name;
 	}
@@ -43,6 +46,8 @@ public class SpeakerDto {
 		this.name = name;
 	}
 
+	
+//	@XmlElement
 	public String getTitle() {
 		return title;
 	}
@@ -51,6 +56,7 @@ public class SpeakerDto {
 		this.title = title;
 	}
 
+//	@XmlElement
 	public String getPhotoUrl() {
 		return photoUrl;
 	}
@@ -59,6 +65,7 @@ public class SpeakerDto {
 		this.photoUrl = photoUrl;
 	}
 
+//	@XmlElement
 	public Date getCreated() {
 		return created;
 	}
@@ -67,6 +74,7 @@ public class SpeakerDto {
 		this.created = created;
 	}
 
+//	@XmlElement
 	public Date getUpdated() {
 		return updated;
 	}
