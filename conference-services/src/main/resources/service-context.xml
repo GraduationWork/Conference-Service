@@ -16,13 +16,16 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>file:/properties/conference.mail.properties</value>
-				<value>file:/properties/conference.mongodb.properties</value>
+				<value>file:/conference/properties/conference.mail.properties</value>
+				<value>file:/conference/properties/conference.mongodb.properties</value>
+				<value>file:/conference/properties/conference.cache.properties</value>
+				<value>file:/conference/properties/conference.service.properties</value>
 			</list>
 		</property>
 	</bean>
 
 	<import resource="classpath:dp-context.xml" />
+	<import resource="classpath:cache-context.xml" />
 
 	<context:component-scan base-package="com.conference.services" />
 
@@ -47,6 +50,13 @@
 	<bean id="nullXml" class="java.io.File">
 		<constructor-arg value="/conference/resources/null.xml" />
 	</bean>
+	
+	<bean id="userVerifyService" class="com.conference.services.verification.user.UserVerifyService">
+		<constructor-arg name="cacheManager" ref="memcacheManager" />
+		<constructor-arg name="verifyUrl" value="${conference.user.verify.service.url}"/>
+		<constructor-arg name="rejectUrl" value="${conference.user.reject.service.url}"/>
+		<constructor-arg name="keyExpiry" value="${conference.user.verify.token.expiry}"/>
+	</bean>	
 
 	<bean id="xsltTransformer"
 		class="com.conference.services.common.transformers.XsltTransformer">
@@ -60,6 +70,7 @@
 		<constructor-arg name="transformer" ref="xsltTransformer" />
 		<constructor-arg name="sessionProvider" ref="springMailSender" />
 		<constructor-arg name="template" ref="userRegistrationTemplate" />
+		<constructor-arg name="urlGenerator" ref="userVerifyService" />
 	</bean>
 	<bean id="userMailVerifier" class="com.conference.services.common.MailVerifierService">
 		<constructor-arg name="mailSender" ref="springMailSender" />

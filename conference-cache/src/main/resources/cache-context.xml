@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/tx
+	   http://www.springframework.org/schema/tx/spring-tx.xsd
+	   http://www.springframework.org/schema/util 
+	   http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!-- 	<bean -->
+<!-- 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 		<property name="locations"> -->
+<!-- 			<list> -->
+<!-- 				<value>file:/conference/properties/conference.cache.properties -->
+<!-- 				</value> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+		<property name="servers" value="${conference.cache.servers}" />
+		<property name="protocol" value="BINARY" />
+	</bean>
+
+	<bean id="memcacheManager" class="com.conference.cache.MemcacheManager">
+		<constructor-arg name="client" ref="memcachedClient" />
+		<constructor-arg name="defaultExpiry" value="${conference.cache.default.expiry}" /> 
+	</bean>
+
+
+		<!-- <bean id="memcacheInetSocketAddress" class="java.net.InetSocketAddress"> -->
+		<!-- <constructor-arg name="hostname" value="${conference.cache.host}" 
+			/> -->
+		<!-- <constructor-arg name="port" value="${conference.cache.port}" /> -->
+		<!-- </bean> -->
+
+		<!-- <bean id="memcachedClient" class="net.spy.memcached.MemcachedClient"> -->
+		<!-- <constructor-arg name="ia" ref="memcacheInetSocketAddress" /> -->
+		<!-- </bean> -->
+
+		<!-- <bean id="memcacheManager" class="com.conference.cache.MemcacheManager"> -->
+		<!-- <constructor-arg name="client" ref="memcachedClient" /> -->
+		<!-- <constructor-arg name="defaultExpiry" value="${conference.cache.default.expiry}" 
+			/> -->
+		<!-- </bean> -->
+
+
+</beans>

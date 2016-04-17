@@ -14,6 +14,7 @@ import com.conference.dataprovider.domain.User;
 import com.conference.services.common.mail.ISessionProvider;
 import com.conference.services.common.transformers.ITransformer;
 import com.conference.services.exceptions.ServiceException;
+import com.conference.services.verification.user.IUserVerifyUrlGenerator;
 
 public class UserMimeMessageMailComposer implements
 		IMessageComposer<User, MimeMessage> {
@@ -22,27 +23,33 @@ public class UserMimeMessageMailComposer implements
 
 	private ITransformer<File, String> transformer;
 	private ISessionProvider<MimeMessage> sessionProvider;
+	private IUserVerifyUrlGenerator urlGenerator;
 	private File template;
 
-	// private IMailConfiguration configuration;
-
-	public UserMimeMessageMailComposer(ITransformer<File, String> transformer,
-			ISessionProvider<MimeMessage> sessionProvider, File template) {
+	public UserMimeMessageMailComposer(ITransformer<File, 
+			String> transformer,
+			ISessionProvider<MimeMessage> sessionProvider, 
+			IUserVerifyUrlGenerator urlGenerator,
+			File template) {
 		Validate.notNull(transformer);
 		Validate.notNull(sessionProvider);
+		Validate.notNull(urlGenerator);
 		Validate.notNull(template);
-		// Validate.notNull(configuration);
 		this.transformer = transformer;
 		this.sessionProvider = sessionProvider;
+		this.urlGenerator = urlGenerator;
 		this.template = template;
-		// this.configuration = configuration;
 	}
 
 	@Override
 	public MimeMessage compose(User user) {
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("name", user.getUsername());
+			String token = urlGenerator.generateToken(user);
+			params.put("firstname", user.getFirstname());
+			params.put("lastname", user.getLastname());
+			params.put("verifyUrl", urlGenerator.generateVerifyUrl(token));
+			params.put("rejectUrl", urlGenerator.generateRejectUrl(token));
 			String emailContent = transformer.transform(template, params);
 			MimeMessage message = sessionProvider.createMessage();
 			message.setFrom(new InternetAddress("conference@gmail.com"));
