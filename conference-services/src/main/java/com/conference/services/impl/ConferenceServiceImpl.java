@@ -46,9 +46,4 @@ public class ConferenceServiceImpl implements IConferenceService{
 		return conferenceDao.readConferences(page, pageSize);
 	}
 
-	@Override
-	public Date getUpdateDate(String id) {
-		return conferenceDao.readUpdateDate(id);
-	}
-	
 }

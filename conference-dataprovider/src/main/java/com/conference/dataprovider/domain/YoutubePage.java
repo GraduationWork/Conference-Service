@@ -1,9 +1,17 @@
 package com.conference.dataprovider.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class YoutubePage {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
+public class YoutubePage implements Serializable{
+
+	private static final long serialVersionUID = -2574957458808414897L;
+	
+	@Id
 	private String id;
 	private String name;
 	private String code;

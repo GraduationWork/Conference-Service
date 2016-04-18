@@ -10,6 +10,5 @@ public interface IConferenceService {
 	public Conference getConference(String id);
 	public List<Conference> getConferences();
 	public List<Conference> getConferences(int page, int pageSize);
-	public Date getUpdateDate(String id);
 	public void updateConference(Conference conference);
 }

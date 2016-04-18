@@ -2,6 +2,8 @@ package com.conference.restful.api.dto;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
 //import org.codehaus.jackson.map.annotate.JsonSerialize;
 //import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.springframework.beans.BeanUtils;
@@ -11,8 +13,14 @@ import com.conference.dataprovider.domain.Speaker;
 public class SpeakerDto {
 
 	private String id;
+	
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String title;
+
+	@NotEmpty
+	@URL
 	private String photoUrl;
 	
 	private Date created;

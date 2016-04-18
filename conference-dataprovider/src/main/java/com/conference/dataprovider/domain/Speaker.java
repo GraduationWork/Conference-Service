@@ -1,12 +1,15 @@
 package com.conference.dataprovider.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="speakers")
-public class Speaker {
+public class Speaker implements Serializable{
+	
+	private static final long serialVersionUID = 6716485388795500326L;
 	
 	@Id
 	private String id;

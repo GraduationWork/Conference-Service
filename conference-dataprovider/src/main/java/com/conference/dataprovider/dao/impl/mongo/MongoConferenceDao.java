@@ -1,11 +1,9 @@
 package com.conference.dataprovider.dao.impl.mongo;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -20,7 +18,7 @@ public class MongoConferenceDao implements IConferenceDao {
 	
 	@Override
 	public void createConference(Conference conference) {
-		mongoOperations.save(conference);
+		mongoOperations.insert(conference);
 	}
 
 	@Override
@@ -35,19 +33,15 @@ public class MongoConferenceDao implements IConferenceDao {
 
 	@Override
 	public List<Conference> readConferences(int page, int pageSize) {
-		return null;
-	}
-
-	@Override
-	public Date readUpdateDate(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = new Query();
+		query.skip((page-1)* pageSize);
+		query.limit(pageSize);
+		return mongoOperations.find(query, Conference.class);
 	}
 
 	@Override
 	public void updateConference(Conference conference) {
-		Query searchUserQuery = new Query(Criteria.where("id").is(conference.getId()));
-//		mongoOperations.findAndModify(searchUserQuery, Update, Conference.class);
+		mongoOperations.save(conference);
 	}
 
 	@Override

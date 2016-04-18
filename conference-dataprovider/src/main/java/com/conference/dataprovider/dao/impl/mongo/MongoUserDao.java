@@ -2,7 +2,6 @@ package com.conference.dataprovider.dao.impl.mongo;
 
 import java.util.List;
 
-import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -21,7 +20,7 @@ public class MongoUserDao implements IUserDao{
 	
 	@Override
 	public void createUser(User user) {
-		mongoOperations.save(user);
+		mongoOperations.insert(user);
 	}
 
 	@Override
@@ -36,12 +35,15 @@ public class MongoUserDao implements IUserDao{
 
 	@Override
 	public List<User> readUsers(int page, int pageSize) {
-		throw new NotImplementedException("");
+		Query query = new Query();
+		query.skip((page-1)* pageSize);
+		query.limit(pageSize);
+		return mongoOperations.find(query, User.class);
 	}
 
 	@Override
 	public void updateUser(User user) {
-		throw new NotImplementedException("");
+		mongoOperations.save(user);
 	}
 
 	@Override

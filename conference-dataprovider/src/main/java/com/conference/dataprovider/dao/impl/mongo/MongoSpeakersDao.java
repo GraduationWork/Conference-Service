@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import com.conference.dataprovider.dao.ISpeakersDao;
@@ -20,7 +19,7 @@ public class MongoSpeakersDao implements ISpeakersDao{
 	
 	@Override
 	public void createSpeaker(Speaker speaker) {
-		mongoOperations.save(speaker);
+		mongoOperations.insert(speaker);
 	}
 
 	@Override
@@ -30,8 +29,7 @@ public class MongoSpeakersDao implements ISpeakersDao{
 
 	@Override
 	public List<Speaker> readSpeakersByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return mongoOperations.find(Query.query(Criteria.where("name").regex(name)), Speaker.class);
 	}
 
 	@Override
@@ -41,31 +39,25 @@ public class MongoSpeakersDao implements ISpeakersDao{
 
 	@Override
 	public List<Speaker> readSpeakers(int page, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = new Query();
+		query.skip((page-1)* pageSize);
+		query.limit(pageSize);
+		return mongoOperations.find(query, Speaker.class);
 	}
 
 	@Override
 	public void updateSpeaker(Speaker speaker) {
-		Query searchUserQuery = new Query(Criteria.where("id").is(speaker.getId()));	
-		
-		Update update = new Update();
-//		update.
-		
-//		mongoOperations.findAndModify(searchUserQuery, Update.fromDBObject(speaker)), Speaker.class);
-//		mongoOperations.findAndModify(searchUserQuery, Update.update("name", speaker.getName()), Speaker.class);
+		mongoOperations.save(speaker);
 	}
 
 	@Override
 	public void deleteSpeaker(Speaker speaker) {
-		// TODO Auto-generated method stub
-		
+		mongoOperations.remove(speaker);
 	}
 
 	@Override
 	public void deleteSpeakerById(String id) {
-		// TODO Auto-generated method stub
-		
+		mongoOperations.remove(mongoOperations.findById(id, Speaker.class));
 	}
 
 }
