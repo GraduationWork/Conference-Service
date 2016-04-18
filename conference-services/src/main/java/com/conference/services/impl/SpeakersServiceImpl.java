@@ -1,18 +1,18 @@
 package com.conference.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.conference.dataprovider.dao.ISpeakersDao;
 import com.conference.dataprovider.domain.Speaker;
 import com.conference.services.ISpeakersService;
 
-//@Service("speakersServiceImpl")
-//@Transactional
+@Service
 public class SpeakersServiceImpl implements ISpeakersService {
 
-//	@Autowired
+	@Autowired
 	private ISpeakersDao speakersDao;
 	
 	@Override
@@ -28,6 +28,11 @@ public class SpeakersServiceImpl implements ISpeakersService {
 	@Override
 	public void updateSpeaker(Speaker speaker) {
 		speakersDao.updateSpeaker(speaker);
+	}
+
+	@Override
+	public List<Speaker> getSpeakers() {
+		return speakersDao.readSpeakers();
 	}
 
 }

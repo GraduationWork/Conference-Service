@@ -25,8 +25,7 @@ public class MongoSpeakersDao implements ISpeakersDao{
 
 	@Override
 	public Speaker readSpeaker(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return mongoOperations.findById(id, Speaker.class);
 	}
 
 	@Override
