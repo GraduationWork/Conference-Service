@@ -1,6 +1,6 @@
 package com.conference.services.impl;
 
-import com.conference.dataprovider.domain.Place;
+import com.conference.core.domain.Place;
 import com.conference.services.IPlaceService;
 
 public class PlaceServiceImpl implements IPlaceService{

@@ -2,7 +2,7 @@ package com.conference.dataprovider.dao;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.Template;
+import com.conference.core.domain.Template;
 
 public interface ITemplateDao {
 	public void createTemplate(Template template);

@@ -2,7 +2,7 @@ package com.conference.dataprovider.dao;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.YoutubePage;
+import com.conference.core.domain.YoutubePage;
 
 public interface IYoutubePageDao {
 	public void createYoutubePage(YoutubePage youtubePage);

@@ -3,12 +3,9 @@ package com.conference.services.impl;
 import java.util.List;
 
 import org.apache.commons.lang3.Validate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import com.conference.core.domain.YoutubePage;
 import com.conference.dataprovider.dao.IYoutubePageDao;
-import com.conference.dataprovider.domain.YoutubePage;
 import com.conference.services.IYoutubePageService;
 
 //@Service

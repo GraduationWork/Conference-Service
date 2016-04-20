@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.ISpeakersDao;
-import com.conference.dataprovider.domain.Speaker;
 import com.conference.services.ISpeakersService;
 
 @Service

@@ -4,8 +4,8 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.conference.core.domain.User;
 import com.conference.dataprovider.dao.IUserDao;
-import com.conference.dataprovider.domain.User;
 import com.conference.services.IUserService;
 import com.conference.services.common.sender.Action;
 import com.conference.services.common.sender.INotificationSender;

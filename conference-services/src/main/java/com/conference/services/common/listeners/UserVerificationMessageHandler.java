@@ -6,7 +6,7 @@ import javax.mail.internet.MimeMessage;
 
 import org.apache.commons.lang3.Validate;
 
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 import com.conference.services.common.composers.IMessageComposer;
 import com.conference.services.common.mail.IMailSender;
 

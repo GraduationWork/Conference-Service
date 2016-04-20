@@ -2,7 +2,7 @@ package com.conference.dataprovider.dao;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 
 public interface IUserDao {
 	public void createUser(User user);

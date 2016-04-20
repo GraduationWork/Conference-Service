@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.Template;
 import com.conference.dataprovider.dao.ITemplateDao;
-import com.conference.dataprovider.domain.Template;
 
 @Repository
 public class MongoTemplateDao implements ITemplateDao{

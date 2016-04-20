@@ -2,7 +2,7 @@ package com.conference.services;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.YoutubePage;
+import com.conference.core.domain.YoutubePage;
 
 public interface IYoutubePageService {
 	public void createYoutubePage(YoutubePage youtubePage);

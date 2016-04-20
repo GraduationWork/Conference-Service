@@ -1,7 +1,6 @@
 package com.conference.services;
 
-import com.conference.dataprovider.domain.Place;
-import com.conference.dataprovider.domain.Speaker;
+import com.conference.core.domain.Place;
 
 public interface IPlaceService {
 	public void createPlace(Place place);

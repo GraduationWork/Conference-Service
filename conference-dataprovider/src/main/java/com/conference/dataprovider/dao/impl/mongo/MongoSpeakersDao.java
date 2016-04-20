@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.ISpeakersDao;
-import com.conference.dataprovider.domain.Speaker;
 
 @Repository
 public class MongoSpeakersDao implements ISpeakersDao{

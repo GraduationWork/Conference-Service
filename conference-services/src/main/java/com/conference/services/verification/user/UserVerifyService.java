@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.apache.commons.lang3.Validate;
 
 import com.conference.cache.ICacheManager;
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 import com.conference.services.exceptions.ServiceException;
 
 public class UserVerifyService implements IUserVerifyUrlGenerator,

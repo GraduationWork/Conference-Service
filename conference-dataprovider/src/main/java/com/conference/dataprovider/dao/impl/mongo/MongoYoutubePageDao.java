@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.YoutubePage;
 import com.conference.dataprovider.dao.IYoutubePageDao;
-import com.conference.dataprovider.domain.YoutubePage;
 
 @Repository
 public class MongoYoutubePageDao implements IYoutubePageDao{

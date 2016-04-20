@@ -1,6 +1,6 @@
 package com.conference.services.verification.user;
 
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 
 public interface IUserVerifyUrlGenerator {
 	public String generateToken(User user);

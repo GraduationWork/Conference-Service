@@ -1,13 +1,9 @@
 package com.conference.services.impl;
 
-import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
+import com.conference.core.domain.Conference;
 import com.conference.dataprovider.dao.IConferenceDao;
-import com.conference.dataprovider.domain.Conference;
 import com.conference.services.IConferenceService;
 
 

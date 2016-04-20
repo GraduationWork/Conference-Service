@@ -1,9 +1,8 @@
 package com.conference.services;
 
-import java.util.Date;
 import java.util.List;
 
-import com.conference.dataprovider.domain.Conference;
+import com.conference.core.domain.Conference;
 
 public interface IConferenceService {
 	public void createConference(Conference conference);

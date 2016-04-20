@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.Tag;
 import com.conference.dataprovider.dao.ITagDao;
-import com.conference.dataprovider.domain.Tag;
 
 @Repository
 public class MongoTagDao implements ITagDao{

@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.User;
 import com.conference.dataprovider.dao.IUserDao;
-import com.conference.dataprovider.domain.User;
 
 @Repository
 public class MongoUserDao implements IUserDao{

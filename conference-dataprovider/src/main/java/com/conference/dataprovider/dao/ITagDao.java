@@ -2,7 +2,7 @@ package com.conference.dataprovider.dao;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.Tag;
+import com.conference.core.domain.Tag;
 
 public interface ITagDao {
 	public void createTag(Tag tag);

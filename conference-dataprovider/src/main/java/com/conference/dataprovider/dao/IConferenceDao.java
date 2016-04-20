@@ -2,7 +2,7 @@ package com.conference.dataprovider.dao;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.Conference;
+import com.conference.core.domain.Conference;
 
 public interface IConferenceDao {
 	public void createConference(Conference conference);

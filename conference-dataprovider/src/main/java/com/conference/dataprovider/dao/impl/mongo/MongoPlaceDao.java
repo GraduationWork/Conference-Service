@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.Place;
 import com.conference.dataprovider.dao.IPlaceDao;
-import com.conference.dataprovider.domain.Place;
 
 @Repository
 public class MongoPlaceDao implements IPlaceDao {

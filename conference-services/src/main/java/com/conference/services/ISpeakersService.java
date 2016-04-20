@@ -2,7 +2,7 @@ package com.conference.services;
 
 import java.util.List;
 
-import com.conference.dataprovider.domain.Speaker;
+import com.conference.core.domain.Speaker;
 
 public interface ISpeakersService {
 	public void createSpeaker(Speaker speaker);

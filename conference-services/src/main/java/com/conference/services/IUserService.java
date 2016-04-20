@@ -1,6 +1,6 @@
 package com.conference.services;
 
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 
 public interface IUserService {
 	public void registerUser(User user);

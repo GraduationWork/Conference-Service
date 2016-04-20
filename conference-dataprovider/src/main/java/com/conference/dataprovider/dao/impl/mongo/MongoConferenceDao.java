@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.Conference;
 import com.conference.dataprovider.dao.IConferenceDao;
-import com.conference.dataprovider.domain.Conference;
 
 @Repository
 public class MongoConferenceDao implements IConferenceDao {
