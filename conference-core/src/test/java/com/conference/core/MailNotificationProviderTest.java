@@ -13,9 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.conference.core.notify.INotificationProvider;
 import com.conference.core.notify.payload.IPayload;
 import com.conference.core.notify.payload.MailPayload;
-import com.conference.core.notify.payload.messages.IMessage;
 import com.conference.core.notify.payload.messages.KeyValueMessage;
-import com.conference.core.notify.payload.recipients.IRecipient;
 import com.conference.core.notify.payload.recipients.MailRecipient;
 
 @RunWith(SpringJUnit4ClassRunner.class)
