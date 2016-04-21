@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.conference.dataprovider.domain.Speaker;
+import com.conference.core.domain.Speaker;
 import com.conference.restful.api.dto.SpeakerDto;
 import com.conference.restful.api.web.events.ResourceCreated;
 import com.conference.restful.api.web.exception.ResourceNotFoundException;

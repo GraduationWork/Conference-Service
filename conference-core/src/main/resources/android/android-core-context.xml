@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/tx
+	   http://www.springframework.org/schema/tx/spring-tx.xsd
+	   http://www.springframework.org/schema/util 
+	   http://www.springframework.org/schema/util/spring-util.xsd">
+
+	
+	<bean id="gcmSender" class="com.google.android.gcm.server.Sender">
+		<constructor-arg name="key" value="${conference.gcm.api.key}" />
+	</bean>
+	
+	<bean id="xsltTransformer"
+		class="com.conference.core.notify.composer.transformer.XsltParametersOnlyTransformer">
+		<constructor-arg name="sourceXml" ref="nullXml" />
+	</bean>
+	<bean id="mimeMessagePayloadComposer"
+		class="com.conference.core.notify.composer.MimeMessagePayloadComposer">
+		<constructor-arg name="transformer" ref="xsltTransformer" />
+		<constructor-arg name="sessionProvider" ref="mimeMessageMailNotificationsSender" />
+		<constructor-arg name="template" ref="userRegistrationTemplate" />
+	</bean>
+	<bean id="mimeMessageMailNotificationsSender"
+		class="com.conference.core.notify.sender.MimeMessageMailNotificationsSender">
+		<constructor-arg name="mailSender" ref="mailSender" />
+	</bean>
+	
+	<bean id="mailNotificationsProvider"
+		class="com.conference.core.notify.BaseNotificationsProvider">
+		<constructor-arg name="composer" ref="mimeMessagePayloadComposer" />
+		<constructor-arg name="sender" ref="mimeMessageMailNotificationsSender" />
+	</bean>
+	
+</beans>

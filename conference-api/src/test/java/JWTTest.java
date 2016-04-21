@@ -10,7 +10,7 @@ import org.junit.Test;
 import com.auth0.jwt.JWTSigner;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.JWTVerifyException;
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 
 
 public class JWTTest {

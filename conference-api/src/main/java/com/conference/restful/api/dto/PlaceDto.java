@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.BeanUtils;
 
-import com.conference.dataprovider.domain.Place;
+import com.conference.core.domain.Place;
 
 //@JsonSerialize(include=Inclusion.NON_NULL)
 public class PlaceDto {

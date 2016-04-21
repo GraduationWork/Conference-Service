@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.BeanUtils;
 
-import com.conference.dataprovider.domain.Conference;
+import com.conference.core.domain.Conference;
 
 //@JsonSerialize(include=Inclusion.NON_NULL)
 public class ConferenceDto {

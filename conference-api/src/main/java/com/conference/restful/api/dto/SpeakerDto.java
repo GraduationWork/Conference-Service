@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.URL;
 //import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.springframework.beans.BeanUtils;
 
-import com.conference.dataprovider.domain.Speaker;
+import com.conference.core.domain.Speaker;
 
 public class SpeakerDto {
 

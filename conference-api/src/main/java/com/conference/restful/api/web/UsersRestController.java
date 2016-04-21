@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 import com.conference.restful.api.dto.UserDto;
 import com.conference.services.IUserService;
 

@@ -3,16 +3,11 @@ package com.conference.core.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Document
 public class Place implements Serializable {
 	
 	private static final long serialVersionUID = -1198658747763378749L;
 	
-	@Id
 	private String id;
 	private String country;
 	private String administrativeArea;

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/tx
+	   http://www.springframework.org/schema/tx/spring-tx.xsd
+	   http://www.springframework.org/schema/util 
+	   http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${conference.email.host}" />
+		<property name="port" value="${conference.email.port}" />
+		<property name="username" value="${conference.email.username}" />
+		<property name="password" value="${conference.email.password}" />
+
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.quitwait">false</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="userRegistrationTemplate" class="java.io.File">
+		<constructor-arg value="/conference/resources/invitation.xslt" />
+	</bean>
+	<bean id="nullXml" class="java.io.File">
+		<constructor-arg value="/conference/resources/null.xml" />
+	</bean>
+	
+	
+	<bean id="xsltTransformer"
+		class="com.conference.core.notify.composer.transformer.XsltParametersOnlyTransformer">
+		<constructor-arg name="sourceXml" ref="nullXml" />
+	</bean>
+	<bean id="mimeMessagePayloadComposer"
+		class="com.conference.core.notify.composer.MimeMessagePayloadComposer">
+		<constructor-arg name="transformer" ref="xsltTransformer" />
+		<constructor-arg name="sessionProvider" ref="mimeMessageMailNotificationsSender" />
+		<constructor-arg name="template" ref="userRegistrationTemplate" />
+	</bean>
+	<bean id="mimeMessageMailNotificationsSender"
+		class="com.conference.core.notify.sender.MimeMessageMailNotificationsSender">
+		<constructor-arg name="mailSender" ref="mailSender" />
+	</bean>
+	
+	<bean id="mailNotificationsProvider"
+		class="com.conference.core.notify.BaseNotificationsProvider">
+		<constructor-arg name="composer" ref="mimeMessagePayloadComposer" />
+		<constructor-arg name="sender" ref="mimeMessageMailNotificationsSender" />
+	</bean>
+	
+</beans>

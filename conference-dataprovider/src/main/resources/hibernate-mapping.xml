@@ -4,7 +4,31 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.conference.core.domain">
-<!-- 
+
+	<class name="Role" table="ROLES">
+		<id name="role" type="string" column="ROLE" />
+	</class>
+
+	<class name="User" table="USERS" >
+		<id name="username" type="string" column="USERNAME" />
+		<property name="password" type="string" column="PASSWORD" />
+		<property name="email" type="string" column="EMAIL" />
+		<property name="firstname" type="string" column="FIRSTNAME" />
+		<property name="lastname" type="string" column="LASTNAME" />
+		<property name="isActive" column="IS_ACTIVE" />
+		<property name="created" type="timestamp" column="CREATED"
+			insert="false" update="false" />
+		<property name="updated" type="timestamp" column="UPDATED"
+			insert="false" />
+		<bag name="roles" table="USERS_ROLES" 
+            lazy="false"
+            fetch="join"
+            cascade="all" >
+			<key column="USERNAME_ID" />
+			<many-to-many column="ROLE_ID" class="Role" />
+		</bag>
+	</class>
+
 	<class name="Speaker" table="SPEAKERS">
 		<id name="id" type="string" column="ID">
 			<generator class="uuid" />
@@ -18,20 +42,34 @@
 			insert="false" />
 	</class>
 
+	<class name="Stakeholder" table="STAKEHOLDERS">
+		<id name="id" type="integer" column="ID">
+			<generator class="increment" />
+		</id>
+		<property name="text" type="string" column="TEXT" />
+<!-- 		<property name="ord" type="integer" column="ORD" /> -->
+<!-- 		<property name="conferenceId" type="string" column="CONFERENCE_ID" /> -->
+	</class>
+	
 	<class name="Place" table="PLACES">
 		<id name="id" type="string" column="ID">
 			<generator class="uuid" />
 		</id>
-		<property name="countryName" type="string" column="COUNTRY_NAME" />
-		<property name="administrativeAreaName" type="string"
-			column="ADMINISTRATIVE_AREA_NAME" />
-		<property name="localityName" type="string" column="LOCALITY_NAME" />
-		<property name="thoroughfareName" type="string" column="THOROUGHFARE_NAME" />
-		<property name="premiseNumber" type="string" column="PREMISE_NUMBER" />
-		<property name="query" type="string" column="QUERY" />
-		<property name="info" type="string" column="INFO" />
 		<property name="positionX" type="float" column="POSITION_X" />
 		<property name="positionY" type="float" column="POSITION_Y" />
+		<property name="created" type="timestamp" column="CREATED"
+			insert="false" update="false" />
+		<property name="updated" type="timestamp" column="UPDATED"
+			insert="false" />
+	</class>
+	
+	<class name="Template" table="TEMPLATE">
+		<id name="id" type="string" column="ID">
+			<generator class="uuid" />
+		</id>
+		<property name="name" type="string" column="NAME" />
+		<property name="previewImageUrl" type="string" column="PREVIEW_IMAGE_URL" />
+		<property name="url" type="string" column="URL" />
 		<property name="created" type="timestamp" column="CREATED"
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
@@ -45,19 +83,33 @@
 		<property name="title" type="string" column="TITLE" />
 		<property name="startTime" type="timestamp" column="START_TIME" />
 		<property name="endTime" type="timestamp" column="END_TIME" />
-		<property name="placeDetails" type="string" column="PLACE_DETAILS" />
-		<property name="logoUrl" type="string" column="LOGO_URL" />
 		<property name="videoId" type="string" column="VIDEO_ID" />
+		<property name="createdBy" type="string" column="CREATED_BY" />
+		<property name="placeDetails" type="string" column="PLACE_DETAILS" />
+		<list name="stakeholders" table="STAKEHOLDERS" inverse="false" cascade="all"  fetch="join" lazy="false">
+            <key column="CONFERENCE_ID" not-null="true" />
+        	<list-index column="ORD" />
+            <one-to-many class="Stakeholder" />
+        </list>
+		<many-to-one name="place" column="PLACE_ID" class="Place"
+ 			lazy="false" not-null="true"  fetch="join"/>
+		<many-to-one name="template" column="TEMPLATE_ID" class="Template"
+ 			lazy="false" not-null="true"  fetch="join"/>
+		
+		
+<!-- 		<property name="stakeholders" column="STAKEHOLDERS" /> -->
+<!-- 		<property name="agenda" type="string" column="AGENDA" /> -->
 		<property name="created" type="timestamp" column="CREATED"
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
-		<many-to-one name="place" column="PLACE_ID" class="Place" lazy="false"
-			not-null="true" />
-		<set name="speakers" cascade="all" table="CONFERENCE_SPEAKERS" lazy="false">
-			<key column="CONFERENCE_ID" />
-			<many-to-many column="SPEAKER_ID" class="Speaker" />
-		</set>
+<!-- 		<many-to-one name="place" column="PLACE_ID" class="Place" -->
+<!-- 			lazy="false" not-null="true" /> -->
+<!-- 		<set name="speakers" cascade="all" table="CONFERENCE_SPEAKERS" -->
+<!-- 			lazy="false"> -->
+<!-- 			<key column="CONFERENCE_ID" /> -->
+<!-- 			<many-to-many column="SPEAKER_ID" class="Speaker" /> -->
+<!-- 		</set> -->
 	</class>
- -->
+
 </hibernate-mapping>

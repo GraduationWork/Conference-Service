@@ -4,32 +4,24 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
 public class Conference implements Serializable{
 	
 	private static final long serialVersionUID = -8888370563151919700L;
 	
-	@Id
 	private String id;
 	private String title;
 	private Date startTime;
 	private Date endTime;
 	private String videoId;
-	@DBRef
 	private Place place;
 	private String placeDetails;
-	@DBRef
 	private Template template;
-	@DBRef
 	private List<Tag> tags;
-	private List<String> stakeholders;
-	private List<AgendaNode> agenda;
-	@DBRef
+	private List<Stakeholder> stakeholders;
+//	private List<AgendaNode> agenda;
+	private String agenda;
 	private List<Speaker> speakers;
+	private String createdBy;
 	private Date created;
 	private Date updated;
 	
@@ -87,10 +79,10 @@ public class Conference implements Serializable{
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
-	public List<String> getStakeholders() {
+	public List<Stakeholder> getStakeholders() {
 		return stakeholders;
 	}
-	public void setStakeholders(List<String> stakeholders) {
+	public void setStakeholders(List<Stakeholder> stakeholders) {
 		this.stakeholders = stakeholders;
 	}
 	public List<Speaker> getSpeakers() {
@@ -114,10 +106,16 @@ public class Conference implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public List<AgendaNode> getAgenda() {
+	public String getAgenda() {
 		return agenda;
 	}
-	public void setAgenda(List<AgendaNode> agenda) {
+	public void setAgenda(String agenda) {
 		this.agenda = agenda;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
 	}
 }

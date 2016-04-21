@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 
-import com.conference.dataprovider.domain.User;
+import com.conference.core.domain.User;
 
 public class UserDto {
 	@NotBlank private String username;

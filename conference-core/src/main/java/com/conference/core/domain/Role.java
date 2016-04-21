@@ -1,8 +1,17 @@
 package com.conference.core.domain;
 
+public class Role {
 
-public enum Role {
-	ROLE_CONFERENCE_ADMIN,
-	ROLE_CONFERENCE_MODERATOR,
-	ROLE_CONFERENCE_USER
+	private String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	
+	
 }

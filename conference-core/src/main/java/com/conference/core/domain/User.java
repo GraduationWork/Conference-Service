@@ -4,21 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 2010997690141681457L;
 	
-	@Id
 	private String username;
 	private String password;
 	private String email;
 	private String firstname;
 	private String lastname;
-	private boolean isActive;
+	private Boolean isActive;
 	private Date created;
 	private Date updated;
 	private List<Role> roles;
@@ -55,11 +50,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public boolean isActive() {
+	public Boolean getIsActive() {
 		return isActive;
 	}
 
-	public void setActive(boolean isActive) {
+	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
 
