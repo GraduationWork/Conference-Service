@@ -13,7 +13,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.conference.core.domain.AgendaNode;
+import com.conference.core.domain.Agenda;
 import com.conference.core.domain.Conference;
 import com.conference.core.domain.Place;
 import com.conference.core.domain.Stakeholder;
@@ -44,7 +44,7 @@ public class HibernateConferenceTest {
 		conference.setPlace(place);
 		conference.setPlaceDetails("test");
 		conference.setStakeholders(Arrays.asList(new Stakeholder("Test"), new Stakeholder("For developers")));
-		AgendaNode agenda = new AgendaNode();
+		Agenda agenda = new Agenda();
 		agenda.setStartDate(Calendar.getInstance().getTime());
 		agenda.setEndDate(Calendar.getInstance().getTime());
 		agenda.setInfo("test");

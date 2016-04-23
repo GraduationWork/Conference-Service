@@ -17,6 +17,7 @@ public class User implements Serializable {
 	private Date created;
 	private Date updated;
 	private List<Role> roles;
+	private List<Conference> conferences;
 	
 	public Date getCreated() {
 		return created;
@@ -88,6 +89,14 @@ public class User implements Serializable {
 
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+
+	public List<Conference> getConferences() {
+		return conferences;
+	}
+
+	public void setConferences(List<Conference> conferences) {
+		this.conferences = conferences;
 	}
 
 	

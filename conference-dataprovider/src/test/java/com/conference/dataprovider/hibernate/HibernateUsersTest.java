@@ -1,7 +1,5 @@
 package com.conference.dataprovider.hibernate;
 
-import java.util.Arrays;
-
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.conference.core.domain.Role;
-import com.conference.core.domain.RolesEnum;
 import com.conference.core.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)

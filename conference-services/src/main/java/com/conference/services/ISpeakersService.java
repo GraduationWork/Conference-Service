@@ -5,8 +5,9 @@ import java.util.List;
 import com.conference.core.domain.Speaker;
 
 public interface ISpeakersService {
-	public void createSpeaker(Speaker speaker);
-	public Speaker getSpeaker(String id);
-	public List<Speaker> getSpeakers();
-	public void updateSpeaker(Speaker speaker);
+	void createSpeaker(Speaker speaker);
+	Speaker getSpeaker(String id);
+	List<Speaker> getSpeakers();
+	void updateSpeaker(Speaker speaker);
+	void deleteSpeakerById(String id);
 }

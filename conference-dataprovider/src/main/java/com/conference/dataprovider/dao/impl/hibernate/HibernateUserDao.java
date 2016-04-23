@@ -32,9 +32,14 @@ public class HibernateUserDao extends BaseHibernateDao implements IUserDao{
 		return getSession().createCriteria(User.class).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> readUsers(int page, int pageSize) {
-		return null;
+		return  getSession()
+				.createCriteria(User.class)
+				.setFirstResult((page - 1) * pageSize )
+				.setMaxResults(pageSize)
+				.list();
 	}
 
 	@Override

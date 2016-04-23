@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.ISpeakersDao;
 import com.conference.services.ISpeakersService;
 
 @Service
+@Transactional
 public class SpeakersServiceImpl implements ISpeakersService {
 
 	@Autowired
@@ -33,6 +35,11 @@ public class SpeakersServiceImpl implements ISpeakersService {
 	@Override
 	public List<Speaker> getSpeakers() {
 		return speakersDao.readSpeakers();
+	}
+
+	@Override
+	public void deleteSpeakerById(String id) {
+		speakersDao.deleteSpeakerById(id);
 	}
 
 }

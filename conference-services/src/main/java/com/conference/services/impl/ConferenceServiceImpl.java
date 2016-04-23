@@ -2,17 +2,22 @@ package com.conference.services.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.conference.core.domain.Conference;
 import com.conference.dataprovider.dao.IConferenceDao;
 import com.conference.services.IConferenceService;
 
 
-//@Service("conferenceServiceImpl")
+@Service("conferenceServiceImpl")
+@Transactional
 public class ConferenceServiceImpl implements IConferenceService{
 
 	private IConferenceDao conferenceDao;
 
-//	@Autowired
+	@Autowired
 	public ConferenceServiceImpl(IConferenceDao conferenceDao) {
 		this.conferenceDao = conferenceDao;
 	}

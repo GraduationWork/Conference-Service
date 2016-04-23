@@ -1,26 +1,37 @@
 package com.conference.services.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.conference.core.domain.Place;
+import com.conference.dataprovider.dao.IPlaceDao;
 import com.conference.services.IPlaceService;
 
+@Service
+@Transactional
 public class PlaceServiceImpl implements IPlaceService{
 
+	private IPlaceDao placeDao;
+	
+	@Autowired
+	public PlaceServiceImpl(IPlaceDao placeDao) {
+		this.placeDao = placeDao;
+	}
+	
 	@Override
 	public void createPlace(Place place) {
-		// TODO Auto-generated method stub
-		
+		placeDao.createPlace(place);
 	}
 
 	@Override
 	public Place getPlace(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return placeDao.readPlace(id);
 	}
 
 	@Override
 	public void updatePlace(Place place) {
-		// TODO Auto-generated method stub
-		
+		placeDao.updatePlace(place);
 	}
 
 }

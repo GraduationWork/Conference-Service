@@ -76,7 +76,7 @@ public class SpeakersRestController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteSpeaker(@PathVariable String id) {
-//		speakersService.deleteSpeaker(id);
+		speakersService.deleteSpeakerById(id);
 	}
 	
 	

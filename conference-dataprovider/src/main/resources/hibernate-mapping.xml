@@ -9,7 +9,7 @@
 		<id name="role" type="string" column="ROLE" />
 	</class>
 
-	<class name="User" table="USERS" >
+	<class name="User" table="USERS">
 		<id name="username" type="string" column="USERNAME" />
 		<property name="password" type="string" column="PASSWORD" />
 		<property name="email" type="string" column="EMAIL" />
@@ -20,11 +20,9 @@
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
-		<bag name="roles" table="USERS_ROLES" 
-            lazy="false"
-            fetch="join"
-            cascade="all" >
-			<key column="USERNAME_ID" />
+		<bag name="roles" table="USERS_ROLES" lazy="false" fetch="join"
+			cascade="all">
+			<key column="USER_ID" />
 			<many-to-many column="ROLE_ID" class="Role" />
 		</bag>
 	</class>
@@ -47,14 +45,18 @@
 			<generator class="increment" />
 		</id>
 		<property name="text" type="string" column="TEXT" />
-<!-- 		<property name="ord" type="integer" column="ORD" /> -->
-<!-- 		<property name="conferenceId" type="string" column="CONFERENCE_ID" /> -->
 	</class>
-	
+
 	<class name="Place" table="PLACES">
 		<id name="id" type="string" column="ID">
 			<generator class="uuid" />
 		</id>
+		<property name="country" type="string" column="COUNTRY" />
+		<property name="administrativeArea" type="string"
+			column="ADMINISTRATIVE_AREA" />
+		<property name="city" type="string" column="CITY" />
+		<property name="street" type="string" column="STREET" />
+		<property name="streetNumber" type="string" column="STREET_NUMBER" />
 		<property name="positionX" type="float" column="POSITION_X" />
 		<property name="positionY" type="float" column="POSITION_Y" />
 		<property name="created" type="timestamp" column="CREATED"
@@ -62,7 +64,7 @@
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
 	</class>
-	
+
 	<class name="Template" table="TEMPLATE">
 		<id name="id" type="string" column="ID">
 			<generator class="uuid" />
@@ -76,6 +78,16 @@
 			insert="false" />
 	</class>
 
+	<class name="Agenda" table="AGENDA">
+		<id name="id" type="integer" column="ID">
+			<generator class="increment" />
+		</id>
+		<property name="startTime" type="timestamp" column="START_TIME" />
+		<property name="endTime" type="timestamp" column="END_TIME" />
+		<property name="text" type="string" column="TEXT" />
+	</class>
+
+
 	<class name="Conference" table="CONFERENCES">
 		<id name="id" type="string" column="ID">
 			<generator class="uuid" />
@@ -84,32 +96,37 @@
 		<property name="startTime" type="timestamp" column="START_TIME" />
 		<property name="endTime" type="timestamp" column="END_TIME" />
 		<property name="videoId" type="string" column="VIDEO_ID" />
-		<property name="createdBy" type="string" column="CREATED_BY" />
 		<property name="placeDetails" type="string" column="PLACE_DETAILS" />
-		<list name="stakeholders" table="STAKEHOLDERS" inverse="false" cascade="all"  fetch="join" lazy="false">
-            <key column="CONFERENCE_ID" not-null="true" />
-        	<list-index column="ORD" />
-            <one-to-many class="Stakeholder" />
-        </list>
-		<many-to-one name="place" column="PLACE_ID" class="Place"
- 			lazy="false" not-null="true"  fetch="join"/>
-		<many-to-one name="template" column="TEMPLATE_ID" class="Template"
- 			lazy="false" not-null="true"  fetch="join"/>
-		
-		
-<!-- 		<property name="stakeholders" column="STAKEHOLDERS" /> -->
-<!-- 		<property name="agenda" type="string" column="AGENDA" /> -->
 		<property name="created" type="timestamp" column="CREATED"
 			insert="false" update="false" />
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
-<!-- 		<many-to-one name="place" column="PLACE_ID" class="Place" -->
-<!-- 			lazy="false" not-null="true" /> -->
-<!-- 		<set name="speakers" cascade="all" table="CONFERENCE_SPEAKERS" -->
-<!-- 			lazy="false"> -->
-<!-- 			<key column="CONFERENCE_ID" /> -->
-<!-- 			<many-to-many column="SPEAKER_ID" class="Speaker" /> -->
-<!-- 		</set> -->
+		<many-to-one name="place" column="PLACE_ID" class="Place"
+			lazy="false" not-null="true" fetch="join" />
+		<many-to-one name="template" column="TEMPLATE_ID" class="Template"
+			lazy="false" not-null="true" fetch="join" />
+		<list name="stakeholders" table="STAKEHOLDERS" inverse="false"
+			cascade="all" fetch="join" lazy="false">
+			<key column="CONFERENCE_ID" not-null="true" />
+			<list-index column="STAKEHOLDER_ORDER" />
+			<one-to-many class="Stakeholder" />
+		</list>
+		<list name="agenda" table="AGENDA" inverse="false"
+			cascade="all" fetch="join" lazy="false">
+			<key column="CONFERENCE_ID" not-null="true" />
+			<list-index column="AGENDA_ORDER" />
+			<one-to-many class="Stakeholder" />
+		</list>
+		<bag name="speakers" table="CONFERENCE_SPEAKERS" lazy="false"
+			fetch="join" cascade="all">
+			<key column="CONFERENCE_ID" />
+			<many-to-many column="SPEAKER_ID" class="Speaker" />
+		</bag>
+		<bag name="tags" table="CONFERENCE_TAGS" lazy="false" fetch="join"
+			cascade="all">
+			<key column="CONFERENCE_ID" />
+			<many-to-many column="TAG_ID" class="Tag" />
+		</bag>
 	</class>
 
 </hibernate-mapping>

@@ -12,44 +12,45 @@ public class HibernateConferenceDao extends BaseHibernateDao implements IConfere
 
 	@Override
 	public void createConference(Conference conference) {
-		// TODO Auto-generated method stub
-		
+		getSession().save(conference);
 	}
 
 	@Override
 	public Conference readConference(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().get(Conference.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Conference> readConferences() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createCriteria(Conference.class).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Conference> readConferences(int page, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession()
+				.createCriteria(Conference.class)
+				.setFirstResult((page - 1) * pageSize )
+				.setMaxResults(pageSize)
+				.list();
 	}
 
 	@Override
 	public void updateConference(Conference conference) {
-		// TODO Auto-generated method stub
-		
+		getSession().update(conference);
 	}
 
 	@Override
 	public void deleteConference(Conference conference) {
-		// TODO Auto-generated method stub
-		
+		getSession().delete(conference);
 	}
 
 	@Override
 	public void deleteConferenceById(String id) {
-		// TODO Auto-generated method stub
-		
+		Conference conference = new Conference();
+		conference.setId(id);
+		deleteConference(conference);
 	}
 
 }

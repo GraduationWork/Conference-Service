@@ -2,8 +2,10 @@ package com.conference.dataprovider.dao.impl.hibernate;
 
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import com.conference.core.domain.Conference;
 import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.ISpeakersDao;
 
@@ -21,40 +23,45 @@ public class HibernateSpeakerDao extends BaseHibernateDao implements ISpeakersDa
 		return getSession().get(Speaker.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Speaker> readSpeakersByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createCriteria(Speaker.class)
+				.add(Restrictions.like("name", name))
+				.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Speaker> readSpeakers() {
-		// TODO Auto-generated method stub
-		return null;
+		return getSession().createCriteria(Speaker.class).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Speaker> readSpeakers(int page, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return  getSession()
+				.createCriteria(Speaker.class)
+				.setFirstResult((page - 1) * pageSize )
+				.setMaxResults(pageSize)
+				.list();
 	}
 
 	@Override
 	public void updateSpeaker(Speaker speaker) {
-		// TODO Auto-generated method stub
-		
+		getSession().update(speaker);
 	}
 
 	@Override
 	public void deleteSpeaker(Speaker speaker) {
-		// TODO Auto-generated method stub
-		
+		getSession().delete(speaker);
 	}
 
 	@Override
 	public void deleteSpeakerById(String id) {
-		// TODO Auto-generated method stub
-		
+		Speaker speaker = new Speaker();
+		speaker.setId(id);
+		deleteSpeaker(speaker);
 	}
 
 }

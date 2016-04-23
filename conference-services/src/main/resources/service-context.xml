@@ -17,7 +17,7 @@
 		<property name="locations">
 			<list>
 				<value>file:/conference/properties/conference.mail.properties</value>
-				<value>file:/conference/properties/conference.mongodb.properties</value>
+				<value>file:/conference/properties/conference.dataprovider.properties</value>
 				<value>file:/conference/properties/conference.cache.properties</value>
 				<value>file:/conference/properties/conference.service.properties</value>
 			</list>

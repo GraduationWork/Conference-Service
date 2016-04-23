@@ -18,10 +18,8 @@ public class Conference implements Serializable{
 	private Template template;
 	private List<Tag> tags;
 	private List<Stakeholder> stakeholders;
-//	private List<AgendaNode> agenda;
-	private String agenda;
+	private List<Agenda> agenda;
 	private List<Speaker> speakers;
-	private String createdBy;
 	private Date created;
 	private Date updated;
 	
@@ -106,16 +104,10 @@ public class Conference implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public String getAgenda() {
+	public List<Agenda> getAgenda() {
 		return agenda;
 	}
-	public void setAgenda(String agenda) {
+	public void setAgenda(List<Agenda> agenda) {
 		this.agenda = agenda;
-	}
-	public String getCreatedBy() {
-		return createdBy;
-	}
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
 	}
 }

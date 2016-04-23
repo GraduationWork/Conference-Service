@@ -1,9 +1,13 @@
 package com.conference.services;
 
+import java.util.List;
+
 import com.conference.core.domain.Place;
 
 public interface IPlaceService {
-	public void createPlace(Place place);
-	public Place getPlace(String id);
-	public void updatePlace(Place place);
+	void createPlace(Place place);
+	Place getPlace(String id);
+	List<Place> getPlaces();
+	void updatePlace(Place place);
+	void deletePlace(String id);
 }
