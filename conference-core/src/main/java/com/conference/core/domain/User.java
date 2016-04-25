@@ -98,7 +98,5 @@ public class User implements Serializable {
 	public void setConferences(List<Conference> conferences) {
 		this.conferences = conferences;
 	}
-
-	
 	
 }

@@ -11,7 +11,7 @@
 		<security:intercept-url pattern="/authenticate" method="GET" access="permitAll" />
 <!-- 		<security:intercept-url pattern="/conferences" method="GET" access="permitAll" /> -->
 		<security:intercept-url pattern="/register/**" access="hasRole('ROLE_CONFERENCE_USER')" />
-		<security:intercept-url pattern="/conferences" access="hasRole('ROLE_CONFERENCE_ADMIN')" />
+<!-- 		<security:intercept-url pattern="/conferences" access="hasRole('ROLE_CONFERENCE_ADMIN')" /> -->
 		<security:custom-filter ref="jwtAuthenticationFilter"
 			before="ANONYMOUS_FILTER" />
 	</security:http>

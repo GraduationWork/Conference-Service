@@ -82,11 +82,14 @@
 		<id name="id" type="integer" column="ID">
 			<generator class="increment" />
 		</id>
-		<property name="startTime" type="timestamp" column="START_TIME" />
-		<property name="endTime" type="timestamp" column="END_TIME" />
-		<property name="text" type="string" column="TEXT" />
+		<property name="startDate" type="timestamp" column="START_TIME" />
+		<property name="endDate" type="timestamp" column="END_TIME" />
+		<property name="info" type="string" column="INFO" />
 	</class>
 
+	<class name="Tag" table="TAGS">
+		<id name="tag" type="string" column="TAG" />
+	</class>
 
 	<class name="Conference" table="CONFERENCES">
 		<id name="id" type="string" column="ID">
@@ -115,18 +118,20 @@
 			cascade="all" fetch="join" lazy="false">
 			<key column="CONFERENCE_ID" not-null="true" />
 			<list-index column="AGENDA_ORDER" />
-			<one-to-many class="Stakeholder" />
+			<one-to-many class="Agenda" />
 		</list>
-		<bag name="speakers" table="CONFERENCE_SPEAKERS" lazy="false"
+		<list name="speakers" table="CONFERENCE_SPEAKERS" lazy="false"
 			fetch="join" cascade="all">
 			<key column="CONFERENCE_ID" />
+			<list-index column="SPEAKER_ORDER" />
 			<many-to-many column="SPEAKER_ID" class="Speaker" />
-		</bag>
-		<bag name="tags" table="CONFERENCE_TAGS" lazy="false" fetch="join"
+		</list>
+		<list name="tags" table="CONFERENCE_TAGS" lazy="false" fetch="join"
 			cascade="all">
 			<key column="CONFERENCE_ID" />
+			<list-index column="TAG_ORDER" />
 			<many-to-many column="TAG_ID" class="Tag" />
-		</bag>
+		</list>
 	</class>
 
 </hibernate-mapping>

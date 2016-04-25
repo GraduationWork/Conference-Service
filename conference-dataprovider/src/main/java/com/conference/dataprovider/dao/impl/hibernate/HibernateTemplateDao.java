@@ -30,4 +30,16 @@ public class HibernateTemplateDao extends BaseHibernateDao implements ITemplateD
 		getSession().delete(template);
 	}
 
+	@Override
+	public Template readTemplate(String id) {
+		return getSession().get(Template.class, id);
+	}
+
+	@Override
+	public void deleteTemplate(String id) {
+		Template template = new Template();
+		template.setId(id);
+		getSession().delete(template);
+	}
+
 }

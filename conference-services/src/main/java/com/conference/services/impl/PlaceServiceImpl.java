@@ -1,5 +1,7 @@
 package com.conference.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +34,16 @@ public class PlaceServiceImpl implements IPlaceService{
 	@Override
 	public void updatePlace(Place place) {
 		placeDao.updatePlace(place);
+	}
+
+	@Override
+	public List<Place> getPlaces() {
+		return placeDao.readPlaces();
+	}
+
+	@Override
+	public void deletePlace(String id) {
+		placeDao.deletePlaceById(id);
 	}
 
 }

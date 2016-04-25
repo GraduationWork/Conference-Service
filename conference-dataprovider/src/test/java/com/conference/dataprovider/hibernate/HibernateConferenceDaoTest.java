@@ -13,6 +13,9 @@ import com.conference.core.domain.Speaker;
 import com.conference.dataprovider.dao.IConferenceDao;
 import com.conference.dataprovider.dao.IPlaceDao;
 import com.conference.dataprovider.dao.ISpeakersDao;
+import com.conference.dataprovider.dao.ITagDao;
+import com.conference.dataprovider.dao.ITemplateDao;
+import com.conference.dataprovider.dao.IUserDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:dp-context.xml" })
@@ -33,13 +36,29 @@ public class HibernateConferenceDaoTest {
 	@Qualifier("hibernatePlaceDao")
 	private IPlaceDao placeDao;
 	
+	@Autowired
+	@Qualifier("hibernateTagDao")
+	private ITagDao tagDao;
+
+	@Autowired
+	@Qualifier("hibernateTemplateDao")
+	private ITemplateDao templateDao;
+
+	@Autowired
+	@Qualifier("hibernateUserDao")
+	private IUserDao userDao;
+	
+	
 	@Test
 	public void creationTest() {
-		Speaker speaker = new Speaker();
-		speaker.setName("Александр Кассиров");
-		speaker.setPhotoUrl("https://avatars0.githubusercontent.com/u/7274814?v=3&s=460");
-		speaker.setTitle("Software Engineer в Epam Systems");
-		speakersDao.createSpeaker(speaker);
+		
+		conferenceDao.readConferences();
+		
+//		Speaker speaker = new Speaker();
+//		speaker.setName("Александр Кассиров");
+//		speaker.setPhotoUrl("https://avatars0.githubusercontent.com/u/7274814?v=3&s=460");
+//		speaker.setTitle("Software Engineer в Epam Systems");
+//		speakersDao.createSpeaker(speaker);
 //		
 //		Place place = new Place();
 //		place.setAdministrativeAreaName("1");

@@ -21,7 +21,7 @@ import com.conference.restful.api.dto.TagDto;
 import com.conference.services.ITagService;
 
 @RestController
-@RequestMapping(SpeakersRestController.RESOURCE_PATH)
+@RequestMapping(TagRestController.RESOURCE_PATH)
 public class TagRestController {
 
 	public static final String RESOURCE_PATH = "/tags";

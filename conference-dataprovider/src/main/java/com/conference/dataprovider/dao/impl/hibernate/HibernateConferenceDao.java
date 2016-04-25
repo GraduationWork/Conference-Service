@@ -2,6 +2,7 @@ package com.conference.dataprovider.dao.impl.hibernate;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
 import com.conference.core.domain.Conference;
@@ -23,7 +24,9 @@ public class HibernateConferenceDao extends BaseHibernateDao implements IConfere
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Conference> readConferences() {
-		return getSession().createCriteria(Conference.class).list();
+		return getSession().createCriteria(Conference.class)
+				 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+				 .list();
 	}
 
 	@SuppressWarnings("unchecked")

@@ -35,4 +35,16 @@ public class MongoTemplateDao implements ITemplateDao{
 		mongoOperations.remove(template);
 	}
 
+	@Override
+	public Template readTemplate(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteTemplate(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

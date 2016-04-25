@@ -47,4 +47,9 @@ public class ConferenceServiceImpl implements IConferenceService{
 		return conferenceDao.readConferences(page, pageSize);
 	}
 
+	@Override
+	public void deleteConference(String id) {
+		conferenceDao.deleteConferenceById(id);
+	}
+
 }

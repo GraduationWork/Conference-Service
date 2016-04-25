@@ -5,9 +5,11 @@ import java.util.List;
 import com.conference.core.domain.Conference;
 
 public interface IConferenceService {
-	public void createConference(Conference conference);
-	public Conference getConference(String id);
-	public List<Conference> getConferences();
-	public List<Conference> getConferences(int page, int pageSize);
-	public void updateConference(Conference conference);
+	void createConference(Conference conference);
+	Conference getConference(String id);
+	List<Conference> getConferences();
+	List<Conference> getConferences(int page, int pageSize);
+	void updateConference(Conference conference);
+	void deleteConference(String id);
+	
 }

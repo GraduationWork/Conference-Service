@@ -20,17 +20,17 @@
 			<groupId>com.kasirau</groupId>
 			<artifactId>conference-services</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.google.apis</groupId>
-			<artifactId>google-api-services-tasks</artifactId>
-			<version>v1-rev43-1.21.0</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.google.apis</groupId> -->
+		<!-- <artifactId>google-api-services-tasks</artifactId> -->
+		<!-- <version>v1-rev43-1.21.0</version> -->
+		<!-- </dependency> -->
 
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client-extensions</artifactId>
-			<version>1.6.0-beta</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>com.google.api-client</groupId> -->
+		<!-- <artifactId>google-api-client-extensions</artifactId> -->
+		<!-- <version>1.6.0-beta</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>com.auth0</groupId>
@@ -68,11 +68,11 @@
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>2.7.3</version>
 		</dependency>
-<dependency>
-	<groupId>org.codehaus.woodstox</groupId>
-	<artifactId>woodstox-core-asl</artifactId>
-	<version>4.4.1</version>
-</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+			<version>4.4.1</version>
+		</dependency>
 
 
 		<dependency>
@@ -90,18 +90,18 @@
 			<artifactId>spring-core</artifactId>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-context</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-beans</artifactId> -->
-		<!-- </dependency> -->
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework</groupId> -->
-		<!-- <artifactId>spring-aop</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -145,6 +145,42 @@
 			<artifactId>slf4j-log4j12</artifactId>
 		</dependency>
 
+		<!-- Logging Dependencies -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+			<version>3.3.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+
 		<!-- Utils -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -165,8 +201,8 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 		</dependency>
-		
-		
+
+
 		<!-- Tiles -->
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -197,8 +233,8 @@
 			<artifactId>tiles-template</artifactId>
 			<version>3.0.5</version>
 		</dependency>
-		
-		
+
+
 	</dependencies>
 	<build>
 		<plugins>

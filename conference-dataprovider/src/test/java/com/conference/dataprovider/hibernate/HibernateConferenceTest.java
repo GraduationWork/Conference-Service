@@ -48,13 +48,12 @@ public class HibernateConferenceTest {
 		agenda.setStartDate(Calendar.getInstance().getTime());
 		agenda.setEndDate(Calendar.getInstance().getTime());
 		agenda.setInfo("test");
-		conference.setAgenda("test");
+//		conference.setAgenda("test");
 		Template template = new Template();
 		template.setName("temp");
 		template.setPreviewImageUrl("url");
 		template.setUrl("url");
 		conference.setTemplate(template);
-		conference.setCreatedBy("ANONYM");
 		
 		
 //		sessionFactory.getCurrentSession().save(place);
