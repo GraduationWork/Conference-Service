@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
 import com.conference.core.domain.Conference;
+import com.conference.core.domain.Stakeholder;
 import com.conference.dataprovider.dao.IConferenceDao;
 
 @Repository
@@ -51,8 +52,10 @@ public class HibernateConferenceDao extends BaseHibernateDao implements IConfere
 
 	@Override
 	public void deleteConferenceById(String id) {
-		Conference conference = new Conference();
-		conference.setId(id);
+		Conference conference = readConference(id);
+		for(Stakeholder stakeholder: conference.getStakeholders()) {
+			getSession().delete(stakeholder);
+		}
 		deleteConference(conference);
 	}
 

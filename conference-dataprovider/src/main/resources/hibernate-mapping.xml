@@ -105,24 +105,18 @@
 		<property name="updated" type="timestamp" column="UPDATED"
 			insert="false" />
 		<many-to-one name="place" column="PLACE_ID" class="Place"
-			lazy="false" not-null="true" fetch="join" />
+			lazy="false" fetch="join" />
 		<many-to-one name="template" column="TEMPLATE_ID" class="Template"
-			lazy="false" not-null="true" fetch="join" />
-		<list name="stakeholders" table="STAKEHOLDERS" inverse="false"
-			cascade="all" fetch="join" lazy="false">
-			<key column="CONFERENCE_ID" not-null="true" />
-			<list-index column="STAKEHOLDER_ORDER" />
-			<one-to-many class="Stakeholder" />
-		</list>
+			lazy="false" fetch="join" />
 		<list name="agenda" table="AGENDA" inverse="false"
 			cascade="all" fetch="join" lazy="false">
 			<key column="CONFERENCE_ID" not-null="true" />
 			<list-index column="AGENDA_ORDER" />
 			<one-to-many class="Agenda" />
 		</list>
-		<list name="speakers" table="CONFERENCE_SPEAKERS" lazy="false"
-			fetch="join" cascade="all">
-			<key column="CONFERENCE_ID" />
+		<list name="speakers" table="CONFERENCE_SPEAKERS" lazy="false" fetch="join"
+			cascade="all">
+			<key column="CONFERENCE_ID"  />
 			<list-index column="SPEAKER_ORDER" />
 			<many-to-many column="SPEAKER_ID" class="Speaker" />
 		</list>
@@ -131,6 +125,11 @@
 			<key column="CONFERENCE_ID" />
 			<list-index column="TAG_ORDER" />
 			<many-to-many column="TAG_ID" class="Tag" />
+		</list>
+		<list name="stakeholders" table="STAKEHOLDERS" cascade="all" fetch="join" lazy="false" inverse="false"  >
+			<key column="CONFERENCE_ID" not-null="true" />
+			<list-index column="STAKEHOLDER_ORDER" />
+			<one-to-many class="Stakeholder" />
 		</list>
 	</class>
 

@@ -50,9 +50,15 @@ public class HibernateConferenceDaoTest {
 	
 	
 	@Test
+	public void deleteTest() {
+		conferenceDao.deleteConferenceById("4028b881544d1b8e01544d1c39d10000");
+	}
+	
+	
+//	@Test
 	public void creationTest() {
 		
-		conferenceDao.readConferences();
+//		conferenceDao.readConferences();
 		
 //		Speaker speaker = new Speaker();
 //		speaker.setName("Александр Кассиров");
