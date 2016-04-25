@@ -24,23 +24,6 @@
 		<property name="connectionFactory" ref="consumerConnectionFactory"/>
 	</bean>
 	
-	<bean id="userVerificationMessageListener" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
-	    <constructor-arg>
-	    	<bean class="com.conference.services.common.listeners.UserVerificationMessageHandler">
-	    		<constructor-arg name="mailSender" ref="springMailSender" />
-				<constructor-arg name="messageComposer" ref="userMimeMessageMailComposer" />
-	    	</bean>
-	    </constructor-arg>
-	</bean>
-
-	<bean id="userVerificationJmsContainer" class="com.conference.services.amq.MessageListenerContainer">
-		<constructor-arg name="queueName" value="com.conference.user.verification.queue" />
-		<constructor-arg name="sessionTransacted" value="true" />
-		<constructor-arg name="concurrentConsumers" value="2" />
-		<constructor-arg name="messageListener" ref="userVerificationMessageListener" />
-	</bean>
-
-
 	<bean id="userVerificationJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
 		<property name="connectionFactory" ref="consumerConnectionFactory" />
 		<property name="defaultDestination">
@@ -50,25 +33,45 @@
 		</property>
 		<property name="sessionTransacted" value="true" />
 	</bean>
-	<bean id="registrationOnConferenceJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<property name="connectionFactory" ref="consumerConnectionFactory" />
-		<property name="defaultDestination">
-			<bean class="org.apache.activemq.command.ActiveMQQueue">
-				<constructor-arg value="com.conference.registration.on.conference.queue" />
-			</bean>
-		</property>
-		<property name="sessionTransacted" value="true" />
-	</bean>
 
-	<bean id="amqNotificationSender"
-		class="com.conference.services.common.sender.ActiveMQNotificationSender">
-		<constructor-arg name="jmsTemplates">
-			<map key-type="com.conference.services.common.sender.Action">
-				<entry key="VERIFY_USER" value-ref="userVerificationJmsTemplate" />
-				<entry key="REGISTER_ON_CONFERENCE" value-ref="registrationOnConferenceJmsTemplate" />
-			</map>
-		</constructor-arg>
-	</bean>
+
+<!-- 	<bean id="userVerificationJmsContainer" class="com.conference.services.amq.MessageListenerContainer"> -->
+<!-- 		<constructor-arg name="queueName" value="com.conference.user.verification.queue" /> -->
+<!-- 		<constructor-arg name="sessionTransacted" value="true" /> -->
+<!-- 		<constructor-arg name="concurrentConsumers" value="2" /> -->
+<!-- 		<constructor-arg name="messageListener" ref="userVerificationMessageListener" /> -->
+<!-- 	</bean> -->
+
+
+<!-- 	<bean id="userVerificationMessageListener" class="org.springframework.jms.listener.adapter.MessageListenerAdapter"> -->
+<!-- 	    <constructor-arg> -->
+<!-- 	    	<bean class="com.conference.services.common.listeners.UserVerificationMessageHandler"> -->
+<!-- 	    		<constructor-arg name="mailSender" ref="springMailSender" /> -->
+<!-- 				<constructor-arg name="messageComposer" ref="userMimeMessageMailComposer" /> -->
+<!-- 	    	</bean> -->
+<!-- 	    </constructor-arg> -->
+<!-- 	</bean> -->
+
+
+<!-- 	<bean id="registrationOnConferenceJmsTemplate" class="org.springframework.jms.core.JmsTemplate"> -->
+<!-- 		<property name="connectionFactory" ref="consumerConnectionFactory" /> -->
+<!-- 		<property name="defaultDestination"> -->
+<!-- 			<bean class="org.apache.activemq.command.ActiveMQQueue"> -->
+<!-- 				<constructor-arg value="com.conference.registration.on.conference.queue" /> -->
+<!-- 			</bean> -->
+<!-- 		</property> -->
+<!-- 		<property name="sessionTransacted" value="true" /> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="amqNotificationSender" -->
+<!-- 		class="com.conference.services.common.sender.ActiveMQNotificationSender"> -->
+<!-- 		<constructor-arg name="jmsTemplates"> -->
+<!-- 			<map key-type="com.conference.services.common.sender.Action"> -->
+<!-- 				<entry key="VERIFY_USER" value-ref="userVerificationJmsTemplate" /> -->
+<!-- 				<entry key="REGISTER_ON_CONFERENCE" value-ref="registrationOnConferenceJmsTemplate" /> -->
+<!-- 			</map> -->
+<!-- 		</constructor-arg> -->
+<!-- 	</bean> -->
 	
 	
 </beans>

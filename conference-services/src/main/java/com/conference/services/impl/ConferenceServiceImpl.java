@@ -3,12 +3,14 @@ package com.conference.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.conference.core.domain.Conference;
 import com.conference.dataprovider.dao.IConferenceDao;
 import com.conference.services.IConferenceService;
+import com.conference.services.events.ConferenceCreated;
 
 
 @Service("conferenceServiceImpl")
@@ -16,15 +18,19 @@ import com.conference.services.IConferenceService;
 public class ConferenceServiceImpl implements IConferenceService{
 
 	private IConferenceDao conferenceDao;
-
+	private ApplicationEventPublisher eventPublisher;
+	
 	@Autowired
-	public ConferenceServiceImpl(IConferenceDao conferenceDao) {
+	public ConferenceServiceImpl(IConferenceDao conferenceDao,
+			ApplicationEventPublisher eventPublisher) {
 		this.conferenceDao = conferenceDao;
+		this.eventPublisher = eventPublisher;
 	}
 	
 	@Override
 	public void createConference(Conference conference) {
 		conferenceDao.createConference(conference);
+		eventPublisher.publishEvent(new ConferenceCreated(this,conference));
 	}
 
 	@Override

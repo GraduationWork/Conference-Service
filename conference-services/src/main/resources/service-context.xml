@@ -26,59 +26,8 @@
 
 	<import resource="classpath:dp-context.xml" />
 	<import resource="classpath:cache-context.xml" />
-<!-- 	<import resource="amq-context.xml" /> -->
+	<import resource="amq-context.xml" />
 
 	<context:component-scan base-package="com.conference.services" />
-
-<!-- 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> -->
-<!-- 		<property name="host" value="${conference.email.host}" /> -->
-<!-- 		<property name="port" value="${conference.email.port}" /> -->
-<!-- 		<property name="username" value="${conference.email.username}" /> -->
-<!-- 		<property name="password" value="${conference.email.password}" /> -->
-
-<!-- 		<property name="javaMailProperties"> -->
-<!-- 			<props> -->
-<!-- 				<prop key="mail.smtp.auth">true</prop> -->
-<!-- 				<prop key="mail.smtp.starttls.enable">true</prop> -->
-<!-- 				<prop key="mail.smtp.quitwait">false</prop> -->
-<!-- 			</props> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
-
-<!-- 	<bean id="userRegistrationTemplate" class="java.io.File"> -->
-<!-- 		<constructor-arg value="/conference/resources/invitation.xslt" /> -->
-<!-- 	</bean> -->
-<!-- 	<bean id="nullXml" class="java.io.File"> -->
-<!-- 		<constructor-arg value="/conference/resources/null.xml" /> -->
-<!-- 	</bean> -->
-	
-<!-- 	<bean id="userVerifyService" class="com.conference.services.verification.user.UserVerifyService"> -->
-<!-- 		<constructor-arg name="cacheManager" ref="memcacheManager" /> -->
-<!-- 		<constructor-arg name="verifyUrl" value="${conference.user.verify.service.url}"/> -->
-<!-- 		<constructor-arg name="rejectUrl" value="${conference.user.reject.service.url}"/> -->
-<!-- 		<constructor-arg name="keyExpiry" value="${conference.user.verify.token.expiry}"/> -->
-<!-- 	</bean>	 -->
-
-<!-- 	<bean id="xsltTransformer" -->
-<!-- 		class="com.conference.services.common.transformers.XsltTransformer"> -->
-<!-- 		<constructor-arg name="sourceXml" ref="nullXml" /> -->
-<!-- 	</bean> -->
-<!-- 	<bean id="springMailSender" class="com.conference.services.common.mail.SpringMailSender"> -->
-<!-- 		<constructor-arg name="mailSender" ref="mailSender" /> -->
-<!-- 	</bean> -->
-<!-- 	<bean id="userMimeMessageMailComposer" -->
-<!-- 		class="com.conference.services.common.composers.UserMimeMessageMailComposer"> -->
-<!-- 		<constructor-arg name="transformer" ref="xsltTransformer" /> -->
-<!-- 		<constructor-arg name="sessionProvider" ref="springMailSender" /> -->
-<!-- 		<constructor-arg name="template" ref="userRegistrationTemplate" /> -->
-<!-- 		<constructor-arg name="urlGenerator" ref="userVerifyService" /> -->
-<!-- 	</bean> -->
-	
-	
-<!-- 	<bean id="userMailVerifier" class="com.conference.services.common.MailVerifierService"> -->
-<!-- 		<constructor-arg name="mailSender" ref="springMailSender" /> -->
-<!-- 		<constructor-arg name="messageComposer" ref="userMimeMessageMailComposer" /> -->
-<!-- 	</bean> -->
-
 
 </beans>

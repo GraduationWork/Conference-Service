@@ -30,7 +30,7 @@ public class MailNotificationProviderTest {
 		params.put("email", "aliaksandr.kassirau@gmail.com");
 		params.put("name", "aliaksandr kassirau");
 		KeyValueMessage keyValueMessage = new KeyValueMessage(params);
-		MailRecipient mailRecipient = new MailRecipient();
+		MailRecipient mailRecipient = new MailRecipient("aliaksandr.kassirau@gmail.com");
 		IPayload<KeyValueMessage, MailRecipient> payload = new MailPayload(keyValueMessage,mailRecipient);
 		notificationsProvider.provide(payload);
 	}

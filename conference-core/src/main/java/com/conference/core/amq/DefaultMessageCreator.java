@@ -1,4 +1,4 @@
-package com.conference.services.common.sender;
+package com.conference.core.amq;
 
 import java.io.Serializable;
 

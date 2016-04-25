@@ -1,4 +1,4 @@
-package com.conference.services.amq;
+package com.conference.core.amq;
 
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.lang3.Validate;
