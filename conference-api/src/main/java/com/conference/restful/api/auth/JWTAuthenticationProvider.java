@@ -43,7 +43,5 @@ public class JWTAuthenticationProvider extends AbstractUserDetailsAuthentication
 		
 		return userDetails;
 	}
-	
-	
 
 }

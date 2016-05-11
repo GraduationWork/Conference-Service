@@ -58,4 +58,9 @@ public class UserServiceImpl implements IUserService {
 		userDao.deleteUser(username);
 	}
 
+	@Override
+	public void getUser(String username, String password) {
+		
+	}
+
 }

@@ -49,9 +49,11 @@
 		class="com.conference.core.notify.sender.MimeMessageMailNotificationsSender">
 		<constructor-arg name="mailSender" ref="mailSender" />
 	</bean>
+	<bean id="mailValidator" class="com.conference.core.notify.validator.MailPayloadValidator" />
 	
 	<bean id="mailNotificationsProvider"
 		class="com.conference.core.notify.BaseNotificationsProvider">
+		<constructor-arg name="validator" ref="mailValidator" />
 		<constructor-arg name="composer" ref="mimeMessagePayloadComposer" />
 		<constructor-arg name="sender" ref="mimeMessageMailNotificationsSender" />
 	</bean>

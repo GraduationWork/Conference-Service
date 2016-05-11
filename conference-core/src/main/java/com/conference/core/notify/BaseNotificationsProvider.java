@@ -12,14 +12,15 @@ import com.conference.core.notify.validator.IValidator;
 
 public class BaseNotificationsProvider implements INotificationProvider{
 
-	private IValidator validator;
+	private IValidator<IPayload> validator;
 	private IPayloadComposer<IRequest, IMessage, IRecipient> composer;
 	private ISender<IRequest> sender; 
 
 	public BaseNotificationsProvider(
+			IValidator<IPayload> validator,
 			IPayloadComposer<IRequest, IMessage, IRecipient> composer,
 			ISender<IRequest> sender) {
-//		Validate.notNull(validator);
+		Validate.notNull(validator);
 		Validate.notNull(composer);
 		Validate.notNull(sender);
 		this.validator = validator;
@@ -29,10 +30,9 @@ public class BaseNotificationsProvider implements INotificationProvider{
 
 	@Override
 	public void provide(IPayload payload) {
-//		validator.validate(payload);
+		validator.validate(payload);
 		IRequest request = composer.compose(payload);
 		sender.send(request);
 	}
-	
 	
 }
